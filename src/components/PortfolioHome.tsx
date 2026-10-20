@@ -279,32 +279,63 @@ export function PortfolioHome({
 
         <div className="divide-y divide-[var(--border-subtle)] border-y border-[var(--border-subtle)]">
           {PROFILE.experiences.map((exp) => (
-            <div
-              key={exp.company}
-              className="py-4 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2"
-            >
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
+            <div key={exp.company} className="py-5 space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                <div className="flex flex-wrap items-center gap-2">
                   <a
                     href={exp.companyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-semibold text-sm text-[var(--text-primary)] hover:text-emerald-400 transition-colors"
+                    className="font-semibold text-base text-[var(--text-primary)] hover:text-emerald-400 transition-colors"
                   >
                     {exp.company}
                   </a>
                   <span className="text-[var(--text-muted)]">·</span>
-                  <span className="text-xs font-mono-code text-[var(--text-secondary)]">
+                  <span className="text-xs font-mono-code text-emerald-400">
                     {exp.role[lang]}
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm text-[var(--text-secondary)]">
-                  {exp.summary[lang]}
-                </p>
+                <span className="text-xs font-mono-code text-[var(--text-muted)] shrink-0">
+                  {exp.period[lang]}
+                </span>
               </div>
-              <span className="text-xs font-mono-code text-[var(--text-muted)] shrink-0">
-                {exp.period[lang]}
-              </span>
+
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                {exp.summary[lang]}
+              </p>
+
+              {exp.subRoles && (
+                <div className="space-y-3 pl-3 border-l border-[var(--border-strong)] mt-2">
+                  {exp.subRoles.map((sub) => (
+                    <div key={sub.team.en} className="space-y-1">
+                      <div className="flex flex-wrap items-baseline justify-between gap-2">
+                        <span className="text-xs font-semibold text-[var(--text-primary)]">
+                          {sub.team[lang]}
+                        </span>
+                        <span className="text-[11px] font-mono-code text-[var(--text-muted)]">
+                          {sub.period[lang]}
+                        </span>
+                      </div>
+                      <ul className="space-y-1 text-xs text-[var(--text-secondary)] leading-relaxed list-disc pl-4">
+                        {sub.bullets[lang].map((b, idx) => (
+                          <li key={idx}>{b}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                {exp.stack.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-2 py-0.5 rounded-md text-[11px] font-mono-code bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border-subtle)]"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
           ))}
         </div>

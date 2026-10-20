@@ -13,12 +13,19 @@ export interface ClientBrand {
   featured: boolean;
 }
 
+export interface ExperienceSubRole {
+  team: { pt: string; en: string };
+  period: { pt: string; en: string };
+  bullets: { pt: string[]; en: string[] };
+}
+
 export interface ExperienceItem {
   company: string;
   companyUrl: string;
   role: { pt: string; en: string };
   period: { pt: string; en: string };
   summary: { pt: string; en: string };
+  subRoles?: ExperienceSubRole[];
   stack: string[];
 }
 
@@ -47,21 +54,21 @@ export const PROFILE = {
   shortName: "Gustavo Miranda",
   handle: "@gstvribs",
   avatar: "https://avatars.githubusercontent.com/u/7907966?v=4",
-  location: "Brasil",
+  location: "São Paulo, Brasil",
   email: "gu_ribeiro@live.com",
   role: {
-    pt: "Software Engineer @ Uber",
-    en: "Software Engineer @ Uber",
+    pt: "Backend Engineer @ Uber",
+    en: "Backend Engineer @ Uber",
   },
   previousBadge: "ex @CI&T",
   bio: {
     pt: [
-      "Engenheiro de software na Uber (ex @CI&T), construindo aplicações e arquiteturas web em escala global. Ao longo da carreira, entreguei projetos críticos para empresas como Google, Grupo Boticário, Bradesco e Mitsui.",
-      "No passado, também atuei como especialista em Design Systems e monorepos, compartilhando aprendizados em conferências como ReactConf BR, TDC e no podcast Real Talk JavaScript.",
+      "Backend Engineer na Uber em São Paulo, atuando no time de Rider Growth para ativar usuários até a primeira viagem. Gosto de liderar features de ponta a ponta: do design doc e arquitetura backend ao experimento A/B e dashboards de impacto, além de criar ferramentas internas e AI skills usadas semanalmente pelo time e liderança.",
+      "Antes da Uber (ex @CI&T), entreguei projetos críticos para empresas como Google, Grupo Boticário, Bradesco e Mitsui, e atuei como especialista em Design Systems e monorepos.",
     ],
     en: [
-      "Software Engineer at Uber (ex @CI&T), building web applications and architectures at global scale. Throughout my career, I've delivered critical projects for Google, Grupo Boticário, Bradesco, and Mitsui.",
-      "Previously, I also worked as a specialist in Design Systems and monorepos, sharing lessons at ReactConf BR, TDC, and on the Real Talk JavaScript podcast.",
+      "Backend Engineer at Uber in São Paulo working on Rider Growth, helping activate riders and get them to their first trip. I like owning features end-to-end: from the design doc and backend to the experiment and metrics dashboards, while building internal tools and AI skills used weekly by my team and leadership.",
+      "Prior to Uber (ex @CI&T), I delivered critical projects for Google, Grupo Boticário, Bradesco, and Mitsui, and worked as a specialist in Design Systems and monorepos.",
     ],
   },
   clients: [
@@ -102,18 +109,68 @@ export const PROFILE = {
       company: "Uber",
       companyUrl: "https://www.uber.com",
       role: {
-        pt: "Software Engineer",
-        en: "Software Engineer",
+        pt: "Backend Engineer · São Paulo",
+        en: "Backend Engineer · São Paulo",
       },
       period: {
-        pt: "Atual",
-        en: "Present",
+        pt: "Mar 2025 – Atual",
+        en: "Mar 2025 – Present",
       },
       summary: {
-        pt: "Desenvolvimento de aplicações web e sistemas em escala global.",
-        en: "Building web applications and systems at global scale.",
+        pt: "Liderança de features ponta a ponta (design doc, backend, experimentação A/B e observabilidade), ferramentas de dados/dashboards-as-code e automações com IA.",
+        en: "End-to-end feature ownership (design doc, backend, A/B experimentation, and metrics), dashboards-as-code tooling, and AI workflow automation.",
       },
-      stack: ["React", "TypeScript", "Node.js", "Distributed Systems"],
+      subRoles: [
+        {
+          team: {
+            pt: "Rider Growth Americas · Rider Activation",
+            en: "Rider Growth Americas · Rider Activation",
+          },
+          period: {
+            pt: "Jan 2026 – Atual",
+            en: "Jan 2026 – Present",
+          },
+          bullets: {
+            pt: [
+              "Dono do backend ponta a ponta para promo countdown timer no seletor de produtos, promoções e mensagens de segurança na home focadas em ativação de passageiros.",
+              "Um dos primeiros engenheiros a rodar experimentos guiados por IA, construindo o ferramental completo (prompts, decks de análise automatizados, dashboards-as-code de 30+ métricas e AI skills para os reviews semanais de liderança).",
+            ],
+            en: [
+              "Owned the backend end-to-end for the promo countdown timer on the product selector, plus home-screen promos and safety messaging to activate riders.",
+              "One of the first engineers to run AI-driven experiments, building the tooling for prompts, auto-generated readout decks, dashboards-as-code covering 30+ rider metrics, and team AI skills used in weekly leadership growth reviews.",
+            ],
+          },
+        },
+        {
+          team: {
+            pt: "Trip Experience",
+            en: "Trip Experience",
+          },
+          period: {
+            pt: "Mar 2025 – Jan 2026",
+            en: "Mar 2025 – Jan 2026",
+          },
+          bullets: {
+            pt: [
+              "Projetou e lançou globalmente a plataforma que alerta passageiros quando o motorista está atrasado ou sem progresso (~5M de alertas/dia), reduzindo cancelamentos em 0,38% e adicionando ~$200M/ano em Gross Bookings (+0,22% Mobility GB).",
+            ],
+            en: [
+              "Designed and launched globally a platform that alerts riders when their driver is running late or not making progress (~5M alerts/day), cutting cancellations by 0.38% and adding ~$200M/year in gross bookings (+0.22% Mobility GB).",
+            ],
+          },
+        },
+      ],
+      stack: [
+        "Go",
+        "Java",
+        "Python",
+        "Kafka",
+        "Flink",
+        "Spark",
+        "Presto",
+        "A/B Testing",
+        "Claude Code",
+      ],
     },
     {
       company: "CI&T",
@@ -127,10 +184,10 @@ export const PROFILE = {
         en: "Previous",
       },
       summary: {
-        pt: "Arquitetura e entrega para clientes globais (Google, Grupo Boticário, Bradesco, Mitsui) e especialista em Design Systems.",
+        pt: "Arquitetura e entrega para clientes globais (Google, Grupo Boticário, Bradesco, Mitsui) e atuação como especialista em Design Systems.",
         en: "Architecture and delivery for global clients (Google, Grupo Boticário, Bradesco, Mitsui) and Design Systems specialist.",
       },
-      stack: ["React", "Angular", "TypeScript", "Monorepo", "CI/CD"],
+      stack: ["React", "TypeScript", "Node.js", "Angular", "Monorepo", "CI/CD"],
     },
   ] as ExperienceItem[],
   projects: [
