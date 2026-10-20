@@ -65,7 +65,7 @@ export function BlogListClient({
       <div className="space-y-6">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs font-mono-code text-[var(--text-secondary)] hover:text-emerald-400 transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-mono-code text-[var(--text-secondary)] hover:text-violet-400 transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>
@@ -75,7 +75,7 @@ export function BlogListClient({
 
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 text-xs font-mono-code uppercase tracking-wider text-emerald-400">
+            <div className="inline-flex items-center gap-2 text-xs font-mono-code uppercase tracking-wider text-violet-400">
               <BookOpen className="w-3.5 h-3.5" />
               <span>
                 {lang === "pt"
@@ -87,14 +87,14 @@ export function BlogListClient({
               {lang === "pt" ? (
                 <>
                   Artigos &{" "}
-                  <span className="font-serif-editorial italic font-normal text-emerald-400">
+                  <span className="font-serif-editorial italic font-normal text-violet-400">
                     Notas Técnicas
                   </span>
                 </>
               ) : (
                 <>
                   Articles &{" "}
-                  <span className="font-serif-editorial italic font-normal text-emerald-400">
+                  <span className="font-serif-editorial italic font-normal text-violet-400">
                     Technical Notes
                   </span>
                 </>
@@ -109,7 +109,7 @@ export function BlogListClient({
 
           <Link
             href="/studio"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/15 self-start md:self-auto shrink-0"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-violet-500 text-white hover:bg-violet-400 transition-all shadow-lg shadow-violet-500/15 self-start md:self-auto shrink-0"
           >
             <PenSquare className="w-4 h-4" />
             <span>
@@ -132,7 +132,7 @@ export function BlogListClient({
                 ? "Buscar por título, tema ou tecnologia (ex: design systems, redux, feature toggle)..."
                 : "Search by title, topic, or technology (e.g., design systems, redux, feature toggle)..."
             }
-            className="w-full pl-11 pr-4 py-3.5 rounded-2xl surface-card text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-emerald-500/50"
+            className="w-full pl-11 pr-4 py-3.5 rounded-2xl surface-card text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-violet-500/50"
           />
         </div>
 
@@ -142,7 +142,7 @@ export function BlogListClient({
             onClick={() => setSelectedTag("all")}
             className={`px-3 py-1.5 rounded-xl text-xs font-mono-code transition-colors shrink-0 cursor-pointer ${
               selectedTag === "all"
-                ? "bg-emerald-500 text-slate-950 font-semibold"
+                ? "bg-violet-500 text-white font-semibold"
                 : "surface-card text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             }`}
           >
@@ -159,7 +159,7 @@ export function BlogListClient({
               }
               className={`px-3 py-1.5 rounded-xl text-xs font-mono-code transition-colors shrink-0 cursor-pointer ${
                 selectedTag === tag
-                  ? "bg-emerald-500 text-slate-950 font-semibold"
+                  ? "bg-violet-500 text-white font-semibold"
                   : "surface-card text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
@@ -184,7 +184,7 @@ export function BlogListClient({
                 setSearch("");
                 setSelectedTag("all");
               }}
-              className="text-xs font-mono-code text-emerald-400 underline cursor-pointer"
+              className="text-xs font-mono-code text-violet-400 underline cursor-pointer"
             >
               {lang === "pt" ? "Limpar filtros" : "Reset filters"}
             </button>
@@ -198,7 +198,7 @@ export function BlogListClient({
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div className="space-y-3 max-w-2xl">
                   <div className="flex flex-wrap items-center gap-3 text-xs font-mono-code text-[var(--text-muted)]">
-                    <span className="inline-flex items-center gap-1.5 text-emerald-400">
+                    <span className="inline-flex items-center gap-1.5 text-violet-400">
                       <Calendar className="w-3.5 h-3.5" />
                       <span>{post.date}</span>
                     </span>
@@ -210,7 +210,7 @@ export function BlogListClient({
                     {post.featured && (
                       <>
                         <span>•</span>
-                        <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] uppercase">
+                        <span className="px-2 py-0.5 rounded bg-violet-500/10 text-violet-400 border border-violet-500/20 text-[10px] uppercase">
                           {lang === "pt" ? "Destaque" : "Featured"}
                         </span>
                       </>
@@ -218,7 +218,7 @@ export function BlogListClient({
                   </div>
 
                   <Link href={`/blog/${post.slug}`} className="block">
-                    <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] group-hover:text-emerald-400 transition-colors leading-snug">
+                    <h2 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] group-hover:text-violet-400 transition-colors leading-snug">
                       {post.title}
                     </h2>
                   </Link>
@@ -235,7 +235,7 @@ export function BlogListClient({
                         key={tag}
                         className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[11px] font-mono-code bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border-subtle)]"
                       >
-                        <Tag className="w-2.5 h-2.5 text-emerald-400" />
+                        <Tag className="w-2.5 h-2.5 text-violet-400" />
                         {tag}
                       </span>
                     ))}
@@ -245,7 +245,7 @@ export function BlogListClient({
                 <div className="flex md:flex-col items-center md:items-end justify-between gap-3 shrink-0">
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-all"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-violet-500/15 text-violet-400 border border-violet-500/30 group-hover:bg-violet-500 group-hover:text-white transition-all"
                   >
                     <span>
                       {lang === "pt" ? "Ler Artigo Completo" : "Read Full Post"}

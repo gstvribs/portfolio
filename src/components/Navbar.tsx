@@ -101,10 +101,10 @@ export function Navbar() {
             <img
               src="https://avatars.githubusercontent.com/u/7907966?v=4"
               alt="Gustavo Miranda"
-              className="w-full h-full rounded-full object-cover border border-[var(--border-strong)] bg-[var(--bg-elevated)] group-hover:border-emerald-500/60 transition-colors"
+              className="w-full h-full rounded-full object-cover border border-[var(--border-strong)] bg-[var(--bg-elevated)] group-hover:border-violet-500/60 transition-colors"
             />
             <span
-              className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-[var(--bg-primary)]"
+              className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-violet-500 ring-2 ring-[var(--bg-primary)]"
               title="Software Engineer @ Uber"
             />
           </div>
@@ -136,8 +136,8 @@ export function Navbar() {
             href="/studio"
             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all border ${
               pathname === "/studio"
-                ? "bg-emerald-500 text-slate-950 border-emerald-400 shadow-sm"
-                : "bg-emerald-500/10 text-emerald-400 border-emerald-500/25 hover:bg-emerald-500/20"
+                ? "bg-violet-500 text-white border-violet-400 shadow-sm"
+                : "bg-violet-500/10 text-violet-400 border-violet-500/25 hover:bg-violet-500/20"
             }`}
           >
             <PenSquare className="w-3.5 h-3.5" />

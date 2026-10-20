@@ -45,7 +45,7 @@ export function Footer() {
           </Link>
           <Link
             href="/studio"
-            className="text-emerald-400 hover:text-emerald-300 transition-colors"
+            className="text-violet-400 hover:text-violet-300 transition-colors"
           >
             {lang === "pt" ? "Novo Post" : "New Post"}
           </Link>

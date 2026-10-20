@@ -94,7 +94,7 @@ export function BlogPostClient({
           </Link>
           <Link
             href="/studio"
-            className="px-4 py-2.5 rounded-xl text-xs font-semibold bg-emerald-500 text-slate-950"
+            className="px-4 py-2.5 rounded-xl text-xs font-semibold bg-violet-500 text-white"
           >
             {lang === "pt" ? "Abrir Blog Studio" : "Open Blog Studio"}
           </Link>
@@ -110,7 +110,7 @@ export function BlogPostClient({
       {/* Reading Progress Bar */}
       <div className="fixed top-16 left-0 right-0 z-40 h-0.5 bg-transparent">
         <div
-          className="h-full bg-gradient-to-r from-emerald-400 to-sky-400 transition-all duration-150"
+          className="h-full bg-gradient-to-r from-violet-400 to-fuchsia-400 transition-all duration-150"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -120,7 +120,7 @@ export function BlogPostClient({
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1.5 text-xs font-mono-code text-[var(--text-secondary)] hover:text-emerald-400 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-mono-code text-[var(--text-secondary)] hover:text-violet-400 transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>
@@ -133,7 +133,7 @@ export function BlogPostClient({
               href={`/studio?edit=${post.slug}`}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium surface-card text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             >
-              <Edit3 className="w-3.5 h-3.5 text-emerald-400" />
+              <Edit3 className="w-3.5 h-3.5 text-violet-400" />
               <span>
                 {lang === "pt" ? "Editar no Studio" : "Edit in Studio"}
               </span>
@@ -156,7 +156,7 @@ export function BlogPostClient({
         {/* Article Header */}
         <header className="max-w-3xl space-y-6 pb-10 border-b border-[var(--border-subtle)]">
           <div className="flex flex-wrap items-center gap-3 text-xs font-mono-code text-[var(--text-muted)]">
-            <span className="inline-flex items-center gap-1.5 text-emerald-400">
+            <span className="inline-flex items-center gap-1.5 text-violet-400">
               <Calendar className="w-3.5 h-3.5" />
               <span>{post.date}</span>
             </span>
@@ -228,7 +228,7 @@ export function BlogPostClient({
                     <h3 className="text-base font-bold text-[var(--text-primary)]">
                       Gustavo Miranda
                     </h3>
-                    <p className="text-xs font-mono-code text-emerald-400">
+                    <p className="text-xs font-mono-code text-violet-400">
                       Software Engineer @ Uber • ex @CI&amp;T • @gstvribs
                     </p>
                     <p className="text-xs text-[var(--text-secondary)] mt-1">
@@ -241,7 +241,7 @@ export function BlogPostClient({
                   href={`https://x.com/intent/tweet?text=${shareText}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-colors self-start sm:self-auto"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-violet-500 text-white hover:bg-violet-400 transition-colors self-start sm:self-auto"
                 >
                   <Share2 className="w-3.5 h-3.5" />
                   <span>
@@ -289,7 +289,7 @@ export function BlogPostClient({
             <div className="sticky top-24 space-y-6">
               {post.toc.length > 0 && (
                 <div className="surface-card rounded-2xl p-5 space-y-3">
-                  <div className="flex items-center gap-2 text-xs font-mono-code uppercase tracking-wider text-emerald-400">
+                  <div className="flex items-center gap-2 text-xs font-mono-code uppercase tracking-wider text-violet-400">
                     <List className="w-3.5 h-3.5" />
                     <span>
                       {lang === "pt" ? "Neste Artigo" : "On This Page"}
@@ -300,7 +300,7 @@ export function BlogPostClient({
                       <a
                         key={heading.id}
                         href={`#${heading.id}`}
-                        className={`block py-1 text-[var(--text-secondary)] hover:text-emerald-400 transition-colors ${
+                        className={`block py-1 text-[var(--text-secondary)] hover:text-violet-400 transition-colors ${
                           heading.level === 3 ? "pl-3 text-[11px]" : "font-medium"
                         }`}
                       >
@@ -322,7 +322,7 @@ export function BlogPostClient({
                 </p>
                 <Link
                   href="/studio"
-                  className="inline-flex items-center justify-center w-full gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition-colors"
+                  className="inline-flex items-center justify-center w-full gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-violet-500/15 text-violet-400 border border-violet-500/30 hover:bg-violet-500 hover:text-white transition-colors"
                 >
                   <span>
                     {lang === "pt" ? "Abrir Blog Studio" : "Open Blog Studio"}

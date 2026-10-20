@@ -248,7 +248,7 @@ ${content.trim()}
         <div className="space-y-2">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1.5 text-xs font-mono-code text-[var(--text-secondary)] hover:text-emerald-400"
+            className="inline-flex items-center gap-1.5 text-xs font-mono-code text-[var(--text-secondary)] hover:text-violet-400"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>
@@ -256,13 +256,13 @@ ${content.trim()}
             </span>
           </Link>
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+            <div className="p-2 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-400">
               <PenSquare className="w-5 h-5" />
             </div>
             <div>
               <h1 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">
                 Blog Studio{" "}
-                <span className="font-serif-editorial italic font-normal text-emerald-400">
+                <span className="font-serif-editorial italic font-normal text-violet-400">
                   Markdown
                 </span>
               </h1>
@@ -303,10 +303,10 @@ ${content.trim()}
           <button
             type="button"
             onClick={handleCopyMd}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium surface-card text-[var(--text-primary)] hover:border-emerald-500/40 cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium surface-card text-[var(--text-primary)] hover:border-violet-500/40 cursor-pointer"
           >
             {copied ? (
-              <Check className="w-3.5 h-3.5 text-emerald-400" />
+              <Check className="w-3.5 h-3.5 text-violet-400" />
             ) : (
               <Copy className="w-3.5 h-3.5" />
             )}
@@ -324,7 +324,7 @@ ${content.trim()}
           <button
             type="button"
             onClick={handleDownloadMd}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium surface-card text-[var(--text-primary)] hover:border-emerald-500/40 cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium surface-card text-[var(--text-primary)] hover:border-violet-500/40 cursor-pointer"
           >
             <Download className="w-3.5 h-3.5" />
             <span>
@@ -336,7 +336,7 @@ ${content.trim()}
             type="button"
             onClick={handlePublish}
             disabled={saving}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-50"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-violet-500 text-white hover:bg-violet-400 transition-all shadow-lg shadow-violet-500/20 cursor-pointer disabled:opacity-50"
           >
             <Save className="w-4 h-4" />
             <span>
@@ -354,9 +354,9 @@ ${content.trim()}
 
       {/* Save Notification Banner */}
       {saveResult && (
-        <div className="rounded-2xl p-4 bg-emerald-500/15 border border-emerald-500/35 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <div className="flex items-center gap-2.5 text-xs sm:text-sm text-emerald-300">
-            <Sparkles className="w-4 h-4 text-emerald-400 shrink-0" />
+        <div className="rounded-2xl p-4 bg-violet-500/15 border border-violet-500/35 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5 text-xs sm:text-sm text-violet-300">
+            <Sparkles className="w-4 h-4 text-violet-400 shrink-0" />
             <span>
               {saveResult.savedToDisk
                 ? lang === "pt"
@@ -369,7 +369,7 @@ ${content.trim()}
           </div>
           <Link
             href={`/blog/${saveResult.slug}`}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-emerald-500 text-slate-950 hover:bg-emerald-400 shrink-0"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-violet-500 text-white hover:bg-violet-400 shrink-0"
           >
             <Eye className="w-3.5 h-3.5" />
             <span>
@@ -390,7 +390,7 @@ ${content.trim()}
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-sm text-[var(--text-primary)] focus:outline-none focus:border-emerald-500/50"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-sm text-[var(--text-primary)] focus:outline-none focus:border-violet-500/50"
             />
           </div>
 
@@ -405,7 +405,7 @@ ${content.trim()}
                 setSlugManuallyEdited(true);
                 setSlug(e.target.value);
               }}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-sm font-mono-code text-emerald-400 focus:outline-none focus:border-emerald-500/50"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-sm font-mono-code text-violet-400 focus:outline-none focus:border-violet-500/50"
             />
           </div>
 
@@ -417,7 +417,7 @@ ${content.trim()}
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-sm font-mono-code text-[var(--text-primary)] focus:outline-none focus:border-emerald-500/50"
+              className="w-full px-3 py-2.5 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-sm font-mono-code text-[var(--text-primary)] focus:outline-none focus:border-violet-500/50"
             />
           </div>
         </div>
@@ -431,7 +431,7 @@ ${content.trim()}
               type="text"
               value={excerpt}
               onChange={(e) => setExcerpt(e.target.value)}
-              className="w-full px-3.5 py-2 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-xs text-[var(--text-primary)] focus:outline-none focus:border-emerald-500/50"
+              className="w-full px-3.5 py-2 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-xs text-[var(--text-primary)] focus:outline-none focus:border-violet-500/50"
             />
           </div>
 
@@ -443,7 +443,7 @@ ${content.trim()}
               type="text"
               value={excerptEn}
               onChange={(e) => setExcerptEn(e.target.value)}
-              className="w-full px-3.5 py-2 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-xs text-[var(--text-primary)] focus:outline-none focus:border-emerald-500/50"
+              className="w-full px-3.5 py-2 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-xs text-[var(--text-primary)] focus:outline-none focus:border-violet-500/50"
             />
           </div>
 
@@ -455,7 +455,7 @@ ${content.trim()}
               type="text"
               value={tags}
               onChange={(e) => setTags(e.target.value)}
-              className="w-full px-3.5 py-2 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-xs font-mono-code text-[var(--text-primary)] focus:outline-none focus:border-emerald-500/50"
+              className="w-full px-3.5 py-2 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-xs font-mono-code text-[var(--text-primary)] focus:outline-none focus:border-violet-500/50"
             />
           </div>
         </div>
@@ -512,7 +512,7 @@ ${content.trim()}
                 onClick={() => setActiveTab(tab)}
                 className={`px-3 py-1 rounded-lg text-xs font-mono-code capitalize cursor-pointer ${
                   activeTab === tab
-                    ? "bg-emerald-500 text-slate-950 font-semibold"
+                    ? "bg-violet-500 text-white font-semibold"
                     : "text-[var(--text-secondary)]"
                 }`}
               >
@@ -533,7 +533,7 @@ ${content.trim()}
           <div className="surface-card rounded-3xl overflow-hidden flex flex-col">
             <div className="px-4 py-2.5 border-b border-[var(--border-subtle)] flex items-center justify-between text-xs font-mono-code text-[var(--text-muted)]">
               <span className="flex items-center gap-1.5">
-                <FileCode2 className="w-3.5 h-3.5 text-emerald-400" />
+                <FileCode2 className="w-3.5 h-3.5 text-violet-400" />
                 <span>MARKDOWN EDITOR</span>
               </span>
               <span>content/posts/{slug}.md</span>
@@ -573,14 +573,14 @@ ${content.trim()}
       {/* CLI Workflow Tip */}
       <div className="surface-card rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono-code text-[var(--text-secondary)]">
         <div className="flex items-center gap-2">
-          <Terminal className="w-4 h-4 text-emerald-400 shrink-0" />
+          <Terminal className="w-4 h-4 text-violet-400 shrink-0" />
           <span>
             {lang === "pt"
               ? "Prefere criar pelo terminal? Execute:"
               : "Prefer terminal workflow? Run:"}
           </span>
         </div>
-        <code className="px-3 py-1.5 rounded-lg bg-[var(--bg-elevated)] text-emerald-400 border border-[var(--border-subtle)]">
+        <code className="px-3 py-1.5 rounded-lg bg-[var(--bg-elevated)] text-violet-400 border border-[var(--border-subtle)]">
           npm run new:post &quot;{title || "Meu Novo Artigo"}&quot;
         </code>
       </div>

@@ -78,14 +78,14 @@ export default function RootLayout({
       className={`${sans.variable} ${serif.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
-      <body className="bg-architectural-grid antialiased selection:bg-emerald-500/30">
+      <body className="bg-architectural-grid antialiased selection:bg-violet-500/30">
         {/* Ambient radial spotlights */}
         <div
           aria-hidden="true"
           className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
         >
-          <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[900px] h-[440px] rounded-full bg-emerald-500/8 blur-[130px]" />
-          <div className="absolute top-[28%] -right-48 w-[520px] h-[520px] rounded-full bg-sky-500/6 blur-[140px]" />
+          <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[900px] h-[440px] rounded-full bg-violet-500/10 blur-[130px]" />
+          <div className="absolute top-[28%] -right-48 w-[520px] h-[520px] rounded-full bg-fuchsia-500/6 blur-[140px]" />
         </div>
 
         <PreferencesProvider>

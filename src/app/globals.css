@@ -11,9 +11,9 @@ html[data-theme="dark"] {
   --text-primary: #f5f6f8;
   --text-secondary: #a0a6b5;
   --text-muted: #687082;
-  --accent-primary: #10b981;
-  --accent-secondary: #38bdf8;
-  --accent-glow: rgba(16, 185, 129, 0.14);
+  --accent-primary: #a78bfa;
+  --accent-secondary: #c084fc;
+  --accent-glow: rgba(139, 92, 246, 0.16);
   --grid-line: rgba(255, 255, 255, 0.028);
 }
 
@@ -27,9 +27,9 @@ html[data-theme="light"] {
   --text-primary: #0f141c;
   --text-secondary: #475061;
   --text-muted: #768094;
-  --accent-primary: #059669;
-  --accent-secondary: #0284c7;
-  --accent-glow: rgba(5, 150, 105, 0.1);
+  --accent-primary: #7c3aed;
+  --accent-secondary: #9333ea;
+  --accent-glow: rgba(124, 58, 237, 0.12);
   --grid-line: rgba(15, 23, 42, 0.035);
 }
 
@@ -53,7 +53,7 @@ body {
 }
 
 ::selection {
-  background: rgba(16, 185, 129, 0.25);
+  background: rgba(139, 92, 246, 0.28);
   color: var(--text-primary);
 }
 

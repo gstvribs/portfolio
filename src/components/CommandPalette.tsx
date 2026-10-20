@@ -51,7 +51,7 @@ export function CommandPalette({ posts }: { posts: BlogPostMeta[] }) {
               ? "Criar Novo Post no Blog Studio"
               : "Create New Post in Blog Studio",
           hint: "/studio",
-          icon: <PenSquare className="w-4 h-4 text-emerald-400" />,
+          icon: <PenSquare className="w-4 h-4 text-violet-400" />,
           onSelect: () => {
             setCommandOpen(false);
             router.push("/studio");
@@ -183,7 +183,7 @@ export function CommandPalette({ posts }: { posts: BlogPostMeta[] }) {
       items: mergedPosts.map((p) => ({
         label: p.title,
         hint: p.readingTime,
-        icon: <BookOpen className="w-4 h-4 text-emerald-400/80" />,
+        icon: <BookOpen className="w-4 h-4 text-violet-400/80" />,
         onSelect: () => {
           setCommandOpen(false);
           router.push(`/blog/${p.slug}`);
