@@ -18,12 +18,12 @@ export function Footer() {
             <div className="flex items-center gap-3">
               <img
                 src="https://avatars.githubusercontent.com/u/7907966?v=4"
-                alt="Gustavo Ribeiro Miranda"
+                alt="Gustavo Miranda"
                 className="w-10 h-10 rounded-full border border-[var(--border-strong)]"
               />
               <div>
                 <h3 className="font-semibold text-[var(--text-primary)]">
-                  Gustavo Ribeiro Miranda
+                  Gustavo Miranda
                 </h3>
                 <p className="text-xs font-mono-code text-[var(--text-muted)]">
                   Software Engineer @ Uber • @gstvribs
@@ -205,7 +205,7 @@ export function Footer() {
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)] font-mono-code">
           <p>
-            © {new Date().getFullYear()} Gustavo Ribeiro Miranda (@gstvribs).{" "}
+            © {new Date().getFullYear()} Gustavo Miranda (@gstvribs).{" "}
             {lang === "pt"
               ? "Construído com Next.js, TypeScript & Tailwind CSS."
               : "Built with Next.js, TypeScript & Tailwind CSS."}

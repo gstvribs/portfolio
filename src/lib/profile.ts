@@ -47,8 +47,8 @@ export interface TalkAndMediaItem {
 }
 
 export const PROFILE = {
-  name: "Gustavo Ribeiro Miranda",
-  shortName: "Gustavo Ribeiro",
+  name: "Gustavo Miranda",
+  shortName: "Gustavo Miranda",
   handle: "@gstvribs",
   pronouns: "he/him",
   avatar: "https://avatars.githubusercontent.com/u/7907966?v=4",
@@ -69,12 +69,12 @@ export const PROFILE = {
   },
   about: {
     pt: [
-      "Sou Gustavo Ribeiro Miranda (@gstvribs), engenheiro de software brasileiro apaixonado por arquitetura de interfaces, produtividade de engenharia e sistemas distribuídos em larga escala.",
+      "Sou Gustavo Miranda (@gstvribs), engenheiro de software brasileiro apaixonado por arquitetura de interfaces, produtividade de engenharia e sistemas distribuídos em larga escala.",
       "Atualmente atuo como Software Engineer na Uber, desenvolvendo soluções robustas para milhões de usuários. Antes disso, atuei como Master Software Engineer e especialista em Design Systems na CI&T, liderando a arquitetura de bibliotecas de componentes multi-marca, estratégias de Feature Toggles e monorepos em ecossistemas React e Angular.",
       "Acredito que grandes produtos nascem na interseção entre excelência técnica e design intencional — onde tokens semânticos, testes de contrato, automação de releases e Developer Experience (DX) permitem que times inteiros entreguem com velocidade e consistência.",
     ],
     en: [
-      "I'm Gustavo Ribeiro Miranda (@gstvribs), a Brazilian Software Engineer passionate about frontend architecture, engineering productivity, and large-scale systems.",
+      "I'm Gustavo Miranda (@gstvribs), a Brazilian Software Engineer passionate about frontend architecture, engineering productivity, and large-scale systems.",
       "I currently work as a Software Engineer at Uber, building mission-critical web experiences at scale. Previously, I served as a Master Software Engineer & Design Systems Specialist at CI&T, leading multi-brand component libraries, Feature Toggle architectures, and monorepo ecosystems across React and Angular.",
       "I believe exceptional software lives at the intersection of engineering rigor and intentional design — where semantic tokens, contract testing, automated release pipelines, and Developer Experience (DX) empower product teams to ship with speed and confidence.",
     ],

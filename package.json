@@ -1,8 +1,8 @@
 {
-  "name": "gustavo-ribeiro-portfolio",
+  "name": "gustavo-miranda-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Personal portfolio, engineering hub, and blog of Gustavo Ribeiro Miranda (@gstvribs) — Software Engineer at Uber.",
+  "description": "Personal portfolio, engineering hub, and blog of Gustavo Miranda (@gstvribs) — Software Engineer at Uber.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

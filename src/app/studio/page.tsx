@@ -6,7 +6,7 @@ import { BlogStudioClient } from "@/components/BlogStudioClient";
 export const metadata: Metadata = {
   title: "Blog Studio — Criar & Editar Artigos",
   description:
-    "Ambiente interativo em Markdown para criar e publicar artigos no portfólio de Gustavo Ribeiro Miranda (@gstvribs).",
+    "Ambiente interativo em Markdown para criar e publicar artigos no portfólio de Gustavo Miranda (@gstvribs).",
 };
 
 export default function StudioPage() {

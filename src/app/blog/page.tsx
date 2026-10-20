@@ -6,7 +6,7 @@ import { BlogListClient } from "@/components/BlogListClient";
 export const metadata: Metadata = {
   title: "Blog & Artigos Técnicos",
   description:
-    "Artigos sobre Design Systems, Monorepos, React, Feature Toggles e Arquitetura de Software por Gustavo Ribeiro Miranda (@gstvribs).",
+    "Artigos sobre Design Systems, Monorepos, React, Feature Toggles e Arquitetura de Software por Gustavo Miranda (@gstvribs).",
 };
 
 export default function BlogIndexPage() {

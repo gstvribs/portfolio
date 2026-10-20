@@ -16,7 +16,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) {
-    return { title: "Artigo | Gustavo Ribeiro Miranda" };
+    return { title: "Artigo | Gustavo Miranda" };
   }
   return {
     title: post.title,

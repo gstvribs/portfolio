@@ -915,7 +915,7 @@ export function PortfolioHome({
             <div className="flex items-center justify-between px-5 py-3.5 border-b border-[var(--border-subtle)]">
               <div>
                 <h4 className="text-sm font-semibold text-[var(--text-primary)]">
-                  Monorepo + Design Systems = ❤ — Gustavo Ribeiro (ReactConf BR
+                  Monorepo + Design Systems = ❤ — Gustavo Miranda (ReactConf BR
                   2020)
                 </h4>
               </div>
@@ -932,7 +932,7 @@ export function PortfolioHome({
                 width="100%"
                 height="100%"
                 src="https://www.youtube.com/embed/xo57BjNlcxI?autoplay=1"
-                title="Monorepo + Design Systems = ❤ (Gustavo Ribeiro)"
+                title="Monorepo + Design Systems = ❤ (Gustavo Miranda)"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />

@@ -100,7 +100,7 @@ export function Navbar() {
           <div className="relative w-9 h-9 rounded-full overflow-hidden border border-[var(--border-strong)] flex items-center justify-center bg-[var(--bg-elevated)] group-hover:border-emerald-500/60 transition-colors">
             <img
               src="https://avatars.githubusercontent.com/u/7907966?v=4"
-              alt="Gustavo Ribeiro Miranda"
+              alt="Gustavo Miranda"
               className="w-full h-full object-cover"
             />
             <span
@@ -111,7 +111,7 @@ export function Navbar() {
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
               <span className="font-semibold text-sm tracking-tight text-[var(--text-primary)] group-hover:text-emerald-400 transition-colors">
-                Gustavo Ribeiro
+                Gustavo Miranda
               </span>
               <span className="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-mono-code uppercase tracking-wider rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                 @uber
@@ -180,7 +180,7 @@ export function Navbar() {
             href="https://www.linkedin.com/in/gustavo-ribeiro-miranda/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="LinkedIn Gustavo Ribeiro Miranda"
+            aria-label="LinkedIn Gustavo Miranda"
             title="LinkedIn (in/gustavo-ribeiro-miranda)"
             className="hidden sm:inline-flex p-2 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)] transition-colors"
           >

@@ -120,7 +120,7 @@ export function CommandPalette({ posts }: { posts: BlogPostMeta[] }) {
           },
         },
         {
-          label: "LinkedIn (Gustavo Ribeiro Miranda)",
+          label: "LinkedIn (Gustavo Miranda)",
           hint: "linkedin.com/in/gustavo-ribeiro-miranda",
           icon: <ArrowUpRight className="w-4 h-4 text-[var(--text-secondary)]" />,
           onSelect: () => {

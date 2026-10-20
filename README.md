@@ -1,10 +1,10 @@
-# Gustavo Ribeiro Miranda (`@gstvribs`) — Personal Portfolio & Blog
+# Gustavo Miranda (`@gstvribs`) — Personal Portfolio & Blog
 
-Portfólio pessoal, hub de engenharia e motor de blog em Markdown de **Gustavo Ribeiro Miranda** — **Software Engineer @ Uber**.
+Portfólio pessoal, hub de engenharia e motor de blog em Markdown de **Gustavo Miranda** — **Software Engineer @ Uber**.
 
 [![GitHub](https://img.shields.io/badge/GitHub-@gstvribs-181717?style=flat-square&logo=github)](https://github.com/gstvribs)
 [![X (Twitter)](https://img.shields.io/badge/X-@gstvribs-000000?style=flat-square&logo=x)](https://x.com/gstvribs)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Gustavo_Ribeiro_Miranda-0A66C2?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/gustavo-ribeiro-miranda/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Gustavo_Miranda-0A66C2?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/gustavo-ribeiro-miranda/)
 [![Medium](https://img.shields.io/badge/Medium-@gstvribs-000000?style=flat-square&logo=medium)](https://medium.com/@gstvribs)
 
 ---

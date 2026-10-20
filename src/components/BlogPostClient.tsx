@@ -180,12 +180,12 @@ export function BlogPostClient({
             <div className="flex items-center gap-3">
               <img
                 src="https://avatars.githubusercontent.com/u/7907966?v=4"
-                alt="Gustavo Ribeiro Miranda"
+                alt="Gustavo Miranda"
                 className="w-10 h-10 rounded-full border border-[var(--border-strong)]"
               />
               <div>
                 <div className="text-sm font-semibold text-[var(--text-primary)]">
-                  Gustavo Ribeiro Miranda
+                  Gustavo Miranda
                 </div>
                 <div className="text-xs font-mono-code text-[var(--text-muted)]">
                   Software Engineer @ Uber • @gstvribs
@@ -221,12 +221,12 @@ export function BlogPostClient({
                 <div className="flex items-center gap-4">
                   <img
                     src="https://avatars.githubusercontent.com/u/7907966?v=4"
-                    alt="Gustavo Ribeiro Miranda"
+                    alt="Gustavo Miranda"
                     className="w-14 h-14 rounded-2xl border border-[var(--border-strong)]"
                   />
                   <div>
                     <h3 className="text-base font-bold text-[var(--text-primary)]">
-                      Gustavo Ribeiro Miranda
+                      Gustavo Miranda
                     </h3>
                     <p className="text-xs font-mono-code text-emerald-400">
                       Software Engineer @ Uber • @gstvribs

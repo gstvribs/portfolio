@@ -32,14 +32,13 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Gustavo Ribeiro Miranda (@gstvribs) — Software Engineer @ Uber",
-    template: "%s | Gustavo Ribeiro Miranda (@gstvribs)",
+    default: "Gustavo Miranda (@gstvribs) — Software Engineer @ Uber",
+    template: "%s | Gustavo Miranda (@gstvribs)",
   },
   description:
-    "Personal portfolio, engineering architecture hub, talks, and blog of Gustavo Ribeiro Miranda (@gstvribs) — Software Engineer at Uber, Design Systems & Monorepo specialist.",
+    "Personal portfolio, engineering architecture hub, talks, and blog of Gustavo Miranda (@gstvribs) — Software Engineer at Uber, Design Systems & Monorepo specialist.",
   keywords: [
-    "Gustavo Ribeiro Miranda",
-    "Gustavo Ribeiro",
+    "Gustavo Miranda",
     "gstvribs",
     "Software Engineer Uber",
     "Design Systems",
@@ -48,9 +47,9 @@ export const metadata: Metadata = {
     "React",
     "TypeScript",
   ],
-  authors: [{ name: "Gustavo Ribeiro Miranda", url: "https://github.com/gstvribs" }],
+  authors: [{ name: "Gustavo Miranda", url: "https://github.com/gstvribs" }],
   openGraph: {
-    title: "Gustavo Ribeiro Miranda (@gstvribs) — Software Engineer @ Uber",
+    title: "Gustavo Miranda (@gstvribs) — Software Engineer @ Uber",
     description:
       "Global-scale software engineering, Design Systems, monorepo architectures, talks, and technical writing.",
     type: "website",
@@ -59,7 +58,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     creator: "@gstvribs",
-    title: "Gustavo Ribeiro Miranda (@gstvribs) — Software Engineer @ Uber",
+    title: "Gustavo Miranda (@gstvribs) — Software Engineer @ Uber",
     description:
       "Global-scale software engineering, Design Systems, monorepo architectures, talks, and technical writing.",
   },
