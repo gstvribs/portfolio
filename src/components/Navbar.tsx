@@ -97,14 +97,14 @@ export function Navbar() {
           href="/"
           className="flex items-center gap-3 group focus:outline-none"
         >
-          <div className="relative w-9 h-9 rounded-full overflow-hidden border border-[var(--border-strong)] flex items-center justify-center bg-[var(--bg-elevated)] group-hover:border-emerald-500/60 transition-colors">
+          <div className="relative w-9 h-9 shrink-0">
             <img
               src="https://avatars.githubusercontent.com/u/7907966?v=4"
               alt="Gustavo Miranda"
-              className="w-full h-full object-cover"
+              className="w-full h-full rounded-full object-cover border border-[var(--border-strong)] bg-[var(--bg-elevated)] group-hover:border-emerald-500/60 transition-colors"
             />
             <span
-              className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-[var(--bg-primary)]"
+              className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-500 ring-2 ring-[var(--bg-primary)]"
               title="Software Engineer @ Uber"
             />
           </div>
