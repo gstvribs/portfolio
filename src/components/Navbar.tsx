@@ -80,7 +80,7 @@ export function Navbar() {
     },
     {
       href: "/#palestras",
-      label: lang === "pt" ? "Palestras & Media" : "Talks & Media",
+      label: lang === "pt" ? "Palestras" : "Talks",
     },
     {
       href: "/blog",
@@ -91,13 +91,13 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur-xl border-b border-[var(--border-subtle)] bg-[var(--bg-primary)]/80">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-3">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-2">
         {/* Brand Identity */}
         <Link
           href="/"
-          className="flex items-center gap-2.5 group focus:outline-none"
+          className="flex items-center gap-2 group focus:outline-none shrink-0"
         >
-          <div className="relative w-8 h-8 shrink-0">
+          <div className="relative w-7 h-7 shrink-0">
             <img
               src="https://avatars.githubusercontent.com/u/7907966?v=4"
               alt="Gustavo Miranda"
@@ -108,20 +108,20 @@ export function Navbar() {
               title="Software Engineer @ Uber"
             />
           </div>
-          <span className="font-mono-code text-xs font-medium tracking-tight text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
+          <span className="font-mono-code text-xs font-medium tracking-tight text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors whitespace-nowrap">
             @gstvribs
           </span>
         </Link>
 
         {/* Primary Navigation */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-0.5">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`px-3 py-1.5 rounded-lg text-sm transition-colors ${
+              className={`px-2.5 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors ${
                 item.active
-                  ? "text-[var(--text-primary)] bg-[var(--bg-elevated)] font-medium"
+                  ? "text-[var(--text-primary)] bg-[var(--bg-elevated)]"
                   : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)]/60"
               }`}
             >
@@ -131,17 +131,17 @@ export function Navbar() {
         </nav>
 
         {/* Actions: Studio, Socials, Command Palette, Lang, Theme */}
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="flex items-center gap-1 shrink-0">
           <Link
             href="/studio"
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all border ${
+            className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all border ${
               pathname === "/studio"
                 ? "bg-violet-500 text-white border-violet-400 shadow-sm"
                 : "bg-violet-500/10 text-violet-400 border-violet-500/25 hover:bg-violet-500/20"
             }`}
           >
-            <PenSquare className="w-3.5 h-3.5" />
-            <span>{lang === "pt" ? "Novo Post" : "Write Post"}</span>
+            <PenSquare className="w-3.5 h-3.5 shrink-0" />
+            <span>{lang === "pt" ? "Novo Post" : "Write"}</span>
           </Link>
 
           <a
