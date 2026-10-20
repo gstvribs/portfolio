@@ -311,9 +311,6 @@ export const PROFILE = {
       event: "ReactConf BR 2020",
       date: "2020",
       primaryUrl: "https://www.youtube.com/watch?v=xo57BjNlcxI",
-      secondaryUrl:
-        "https://docs.google.com/presentation/d/1JcBTYnxT6iX8clE52YU-8jhqTHA_IWBP17h-OvN_VzU/edit",
-      secondaryLabel: { pt: "Slides", en: "Slides" },
     },
     {
       id: "tdc-future-design-systems",
@@ -322,18 +319,6 @@ export const PROFILE = {
       event: "TDC Future (The Developer's Conference)",
       date: "2020",
       primaryUrl: "https://promo.thedevconf.com/future-ciandt",
-    },
-    {
-      id: "css-in-js-vs-preprocessors",
-      type: "slides",
-      title: "CSS in JS vs Pre and Post Processors",
-      event: "Tech Talk",
-      date: "2019",
-      primaryUrl:
-        "https://docs.google.com/presentation/d/1dP8gN-vckKZ5EJhMe7QnwsiYPwC2fBfqvimPBRiJL8k/edit?usp=sharing",
-      secondaryUrl:
-        "https://itnext.io/css-in-js-vs-pre-post-processors-in-2019-8b1e20c066ed",
-      secondaryLabel: { pt: "Artigo", en: "Article" },
     },
   ] as TalkAndMediaItem[],
 };
