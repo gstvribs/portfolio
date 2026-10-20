@@ -6,23 +6,9 @@ import {
   ArrowRight,
   ArrowUpRight,
   BookOpen,
-  Briefcase,
-  Building2,
-  Calendar,
-  CheckCircle2,
-  Clock,
-  Code2,
-  ExternalLink,
-  FileCode2,
-  FolderGit2,
   Headphones,
-  Layers,
-  Mic,
   PenSquare,
   Play,
-  Sparkles,
-  Terminal,
-  Video,
   X,
 } from "lucide-react";
 import { PROFILE, type ClientBrand } from "@/lib/profile";
@@ -30,15 +16,19 @@ import type { BlogPostMeta } from "@/lib/posts";
 import { usePreferences } from "./PreferencesProvider";
 import { GitHubIcon, LinkedInIcon, XIcon } from "./Navbar";
 
-function BrandLogo({ id }: { id: ClientBrand["id"] }) {
+function BrandLogo({ id, featured }: { id: ClientBrand["id"]; featured: boolean }) {
   switch (id) {
     case "uber":
       return (
         <div className="flex items-center gap-2.5">
-          <div className="w-10 h-10 rounded-xl bg-white text-black flex items-center justify-center font-sans font-black text-sm tracking-tighter shadow-sm">
+          <div className="w-7 h-7 rounded-lg bg-white text-black flex items-center justify-center font-sans font-black text-[11px] tracking-tighter">
             Uber
           </div>
-          <span className="text-xl font-bold tracking-tight text-[var(--text-primary)]">
+          <span
+            className={`font-semibold tracking-tight text-[var(--text-primary)] ${
+              featured ? "text-base" : "text-sm"
+            }`}
+          >
             Uber
           </span>
         </div>
@@ -46,7 +36,7 @@ function BrandLogo({ id }: { id: ClientBrand["id"] }) {
     case "google":
       return (
         <div className="flex items-center gap-2.5">
-          <div className="w-10 h-10 rounded-xl bg-white/95 flex items-center justify-center shadow-sm p-2">
+          <div className="w-7 h-7 rounded-lg bg-white flex items-center justify-center p-1.5">
             <svg viewBox="0 0 24 24" className="w-full h-full" aria-hidden="true">
               <path
                 fill="#4285F4"
@@ -66,42 +56,55 @@ function BrandLogo({ id }: { id: ClientBrand["id"] }) {
               />
             </svg>
           </div>
-          <span className="text-xl font-bold tracking-tight text-[var(--text-primary)]">
+          <span
+            className={`font-semibold tracking-tight text-[var(--text-primary)] ${
+              featured ? "text-base" : "text-sm"
+            }`}
+          >
             Google
           </span>
         </div>
       );
     case "boticario":
       return (
-        <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 flex items-center justify-center font-serif-editorial italic font-bold text-lg">
-            GB
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-6 rounded-md bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center font-serif-editorial italic font-bold text-xs">
+            B
           </div>
-          <span className="text-base font-bold tracking-tight text-[var(--text-primary)]">
+          <span className="text-sm font-medium text-[var(--text-secondary)]">
             Grupo Boticário
           </span>
         </div>
       );
     case "bradesco":
       return (
-        <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-rose-600/20 border border-rose-500/30 text-rose-400 flex items-center justify-center">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className="w-5 h-5">
-              <path d="M12 3v18M6 8c0-2.5 2.5-4 6-4s6 1.5 6 4M5 14c1.5-2 4-3 7-3s5.5 1 7 3" strokeLinecap="round" />
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-6 rounded-md bg-rose-500/15 border border-rose-500/30 text-rose-400 flex items-center justify-center">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              className="w-3.5 h-3.5"
+            >
+              <path
+                d="M12 4v16M6 9c0-2.5 2.5-4 6-4s6 1.5 6 4M5 14c1.5-2 4-3 7-3s5.5 1 7 3"
+                strokeLinecap="round"
+              />
             </svg>
           </div>
-          <span className="text-base font-bold tracking-tight text-[var(--text-primary)]">
+          <span className="text-sm font-medium text-[var(--text-secondary)]">
             Bradesco
           </span>
         </div>
       );
     case "mitsui":
       return (
-        <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-sky-500/20 border border-sky-500/30 text-sky-400 flex items-center justify-center font-mono-code font-bold text-xs">
-            M&amp;Co
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-6 rounded-md bg-sky-500/15 border border-sky-500/30 text-sky-400 flex items-center justify-center font-mono-code font-bold text-[9px]">
+            M&amp;C
           </div>
-          <span className="text-base font-bold tracking-tight text-[var(--text-primary)]">
+          <span className="text-sm font-medium text-[var(--text-secondary)]">
             Mitsui &amp; Co.
           </span>
         </div>
@@ -125,937 +128,336 @@ export function PortfolioHome({
     return Array.from(map.values()).sort((a, b) => (a.date < b.date ? 1 : -1));
   }, [initialPosts, customPosts]);
 
-  const featuredPosts = allPosts.slice(0, 4);
+  const featuredPosts = allPosts.slice(0, 5);
   const featuredClients = PROFILE.clients.filter((c) => c.featured);
-  const enterpriseClients = PROFILE.clients.filter((c) => !c.featured);
+  const otherClients = PROFILE.clients.filter((c) => !c.featured);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-12 space-y-24">
-      {/* HERO SECTION */}
-      <section className="relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          {/* Left Column: Editorial Headline & Socials */}
-          <div className="lg:col-span-7 space-y-7">
-            <div className="inline-flex flex-wrap items-center gap-2.5 px-3.5 py-1.5 rounded-full surface-card text-xs font-mono-code">
-              <span className="inline-flex items-center gap-1.5 text-emerald-400 font-medium">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-12 sm:pt-20 pb-16 space-y-16">
+      {/* INTRO */}
+      <section id="sobre" className="space-y-6">
+        <div className="flex items-center gap-4">
+          <img
+            src={PROFILE.avatar}
+            alt={PROFILE.name}
+            className="w-14 h-14 rounded-full object-cover border border-[var(--border-strong)]"
+          />
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)]">
+              {PROFILE.name}
+            </h1>
+            <div className="flex flex-wrap items-center gap-2 text-xs font-mono-code text-[var(--text-secondary)] mt-0.5">
+              <span className="text-emerald-400 font-medium">
                 {PROFILE.role[lang]}
               </span>
               <span className="text-[var(--text-muted)]">•</span>
-              <span className="text-[var(--text-secondary)]">
-                {PROFILE.previousBadge}
-              </span>
-              <span className="text-[var(--text-muted)]">•</span>
-              <span className="text-[var(--text-secondary)]">
-                {PROFILE.location}
-              </span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.55rem] font-bold tracking-tight text-[var(--text-primary)] leading-[1.08]">
-              {lang === "pt" ? (
-                <>
-                  Engenharia de software em{" "}
-                  <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    escala global
-                  </span>
-                  , sistemas distribuídos & alta performance.
-                </>
-              ) : (
-                <>
-                  Software engineering at{" "}
-                  <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    global scale
-                  </span>
-                  , distributed systems & high performance.
-                </>
-              )}
-            </h1>
-
-            <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl">
-              {PROFILE.subheadline[lang]}
-            </p>
-
-            {/* Primary CTAs */}
-            <div className="flex flex-wrap items-center gap-3 pt-1">
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-all shadow-lg shadow-emerald-500/15"
-              >
-                <BookOpen className="w-4 h-4" />
-                <span>
-                  {lang === "pt"
-                    ? `Ler Artigos (${allPosts.length})`
-                    : `Read Articles (${allPosts.length})`}
-                </span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-
-              <Link
-                href="/studio"
-                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium surface-card text-[var(--text-primary)] hover:border-emerald-500/40"
-              >
-                <PenSquare className="w-4 h-4 text-emerald-400" />
-                <span>
-                  {lang === "pt"
-                    ? "Criar Post no Blog"
-                    : "Create Blog Post"}
-                </span>
-              </Link>
-
-              <a
-                href="#experiencia"
-                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium surface-card text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-              >
-                <Briefcase className="w-4 h-4" />
-                <span>
-                  {lang === "pt" ? "Ver Carreira" : "View Career"}
-                </span>
-              </a>
-            </div>
-
-            {/* Social Links Strip */}
-            <div className="pt-3 border-t border-[var(--border-subtle)]">
-              <div className="text-[11px] font-mono-code uppercase tracking-wider text-[var(--text-muted)] mb-3">
-                {lang === "pt"
-                  ? "Conecte-se nas redes oficiais"
-                  : "Connect on official channels"}
-              </div>
-              <div className="flex flex-wrap items-center gap-2.5">
-                <a
-                  href="https://github.com/gstvribs"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium surface-card text-[var(--text-primary)] hover:border-emerald-500/50 group"
-                >
-                  <GitHubIcon className="w-4 h-4 text-[var(--text-secondary)] group-hover:text-emerald-400 transition-colors" />
-                  <span>GitHub</span>
-                  <span className="font-mono-code text-[var(--text-muted)]">
-                    @gstvribs
-                  </span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-muted)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </a>
-
-                <a
-                  href="https://x.com/gstvribs"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium surface-card text-[var(--text-primary)] hover:border-emerald-500/50 group"
-                >
-                  <XIcon className="w-3.5 h-3.5 text-[var(--text-secondary)] group-hover:text-emerald-400 transition-colors" />
-                  <span>X (Twitter)</span>
-                  <span className="font-mono-code text-[var(--text-muted)]">
-                    @gstvribs
-                  </span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-muted)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </a>
-
-                <a
-                  href="https://www.linkedin.com/in/gustavo-ribeiro-miranda/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium surface-card text-[var(--text-primary)] hover:border-emerald-500/50 group"
-                >
-                  <LinkedInIcon className="w-4 h-4 text-[var(--text-secondary)] group-hover:text-emerald-400 transition-colors" />
-                  <span>LinkedIn</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-muted)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </a>
-
-                <a
-                  href="https://medium.com/@gstvribs"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium surface-card text-[var(--text-primary)] hover:border-emerald-500/50 group"
-                >
-                  <BookOpen className="w-3.5 h-3.5 text-[var(--text-secondary)] group-hover:text-emerald-400 transition-colors" />
-                  <span>Medium</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-muted)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Architectural Profile Card & Terminal Telemetry */}
-          <div className="lg:col-span-5">
-            <div className="surface-card rounded-3xl p-6 sm:p-7 relative overflow-hidden shadow-2xl">
-              <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-emerald-500/15 blur-3xl pointer-events-none" />
-
-              {/* Profile Header */}
-              <div className="flex items-center gap-4 pb-6 border-b border-[var(--border-subtle)]">
-                <div className="relative shrink-0">
-                  <img
-                    src={PROFILE.avatar}
-                    alt={PROFILE.name}
-                    className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover border border-[var(--border-strong)] shadow-md"
-                  />
-                  <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 rounded-md bg-emerald-500 text-slate-950 font-mono-code text-[10px] font-bold">
-                    UBER
-                  </span>
-                </div>
-                <div>
-                  <h2 className="text-lg sm:text-xl font-bold text-[var(--text-primary)]">
-                    {PROFILE.name}
-                  </h2>
-                  <p className="text-xs font-mono-code text-emerald-400 mt-0.5">
-                    {PROFILE.role[lang]}
-                  </p>
-                  <p className="text-xs font-mono-code text-[var(--text-muted)] mt-1">
-                    {PROFILE.previousBadge}
-                  </p>
-                </div>
-              </div>
-
-              {/* Engineering Telemetry Code Box */}
-              <div className="my-5 rounded-2xl bg-[#090b10] border border-white/10 p-4 font-mono-code text-xs leading-relaxed text-slate-300">
-                <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-white/10 text-[11px] text-slate-400">
-                  <span className="flex items-center gap-1.5">
-                    <Terminal className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>gstvribs.profile.ts</span>
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <span className="w-2 h-2 rounded-full bg-rose-500/70" />
-                    <span className="w-2 h-2 rounded-full bg-amber-500/70" />
-                    <span className="w-2 h-2 rounded-full bg-emerald-500/70" />
-                  </span>
-                </div>
-                <div className="space-y-1">
-                  <div>
-                    <span className="text-sky-400">const</span>{" "}
-                    <span className="text-emerald-300">engineer</span> = {"{"}
-                  </div>
-                  <div className="pl-4">
-                    company:{" "}
-                    <span className="text-amber-300">&quot;@uber&quot;</span>,
-                  </div>
-                  <div className="pl-4">
-                    background:{" "}
-                    <span className="text-amber-300">&quot;ex @CI&amp;T&quot;</span>,
-                  </div>
-                  <div className="pl-4">
-                    featuredClients: [
-                    <span className="text-amber-300">&quot;Uber&quot;</span>,{" "}
-                    <span className="text-amber-300">&quot;Google&quot;</span>],
-                  </div>
-                  <div className="pl-4">
-                    enterprise: [
-                    <span className="text-amber-300">
-                      &quot;Grupo Boticário&quot;
-                    </span>
-                    , <span className="text-amber-300">&quot;Bradesco&quot;</span>
-                    , <span className="text-amber-300">&quot;Mitsui&quot;</span>
-                    ],
-                  </div>
-                  <div>{"};"}</div>
-                </div>
-              </div>
-
-              {/* 4 Key Stats Grid */}
-              <div className="grid grid-cols-2 gap-3 pt-1">
-                {PROFILE.stats.map((stat) => (
-                  <div
-                    key={stat.value}
-                    className="rounded-2xl p-3.5 bg-[var(--bg-elevated)]/80 border border-[var(--border-subtle)]"
-                  >
-                    <div className="text-xl font-bold text-[var(--text-primary)] tracking-tight">
-                      {stat.value}
-                    </div>
-                    <div className="text-[11px] text-[var(--text-secondary)] mt-0.5 leading-snug">
-                      {stat.label[lang]}
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <span>{PROFILE.previousBadge}</span>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* GLOBAL BRANDS & ENTERPRISE CLIENTS SHOWCASE */}
-      <section id="clientes" className="scroll-mt-24 space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 text-xs font-mono-code uppercase tracking-wider text-emerald-400">
-              <Building2 className="w-3.5 h-3.5" />
-              <span>
-                {lang === "pt"
-                  ? "Empresas & Projetos Entregues"
-                  : "Companies & Enterprise Impact"}
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)]">
-              {lang === "pt" ? (
-                <>
-                  Engenharia em escala para{" "}
-                  <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    gigantes globais e líderes de mercado
-                  </span>
-                </>
-              ) : (
-                <>
-                  Engineering at scale for{" "}
-                  <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    global tech giants and market leaders
-                  </span>
-                </>
-              )}
-            </h2>
-          </div>
-          <span className="text-xs font-mono-code text-[var(--text-muted)]">
-            Uber • Google • Grupo Boticário • Bradesco • Mitsui
-          </span>
-        </div>
-
-        {/* Highlighted Tier-1 Giants: Uber & Google */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {featuredClients.map((client) => (
-            <div
-              key={client.id}
-              className="surface-card rounded-3xl p-6 sm:p-7 relative overflow-hidden border border-emerald-500/30 bg-gradient-to-br from-emerald-500/8 via-transparent to-sky-500/5"
-            >
-              <div className="flex items-center justify-between gap-3 mb-4">
-                <BrandLogo id={client.id} />
-                <span className="px-3 py-1 rounded-full text-[11px] font-mono-code font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-                  {client.badge[lang]}
-                </span>
-              </div>
-              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-                {client.description[lang]}
-              </p>
-            </div>
+        <div className="space-y-3 text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
+          {PROFILE.bio[lang].map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
           ))}
         </div>
 
-        {/* Enterprise Clients Grid: Grupo Boticário, Bradesco, Mitsui */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {enterpriseClients.map((client) => (
-            <div
-              key={client.id}
-              className="surface-card rounded-2xl p-5 flex flex-col justify-between space-y-3"
-            >
-              <div className="flex items-center justify-between gap-2">
-                <BrandLogo id={client.id} />
-                <span className="px-2 py-0.5 rounded-md text-[10px] font-mono-code bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border-subtle)]">
-                  {client.badge[lang]}
-                </span>
-              </div>
-              <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                {client.description[lang]}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+        {/* Social Links */}
+        <div className="flex flex-wrap items-center gap-4 pt-1 text-xs font-mono-code">
+          <a
+            href="https://github.com/gstvribs"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          >
+            <GitHubIcon className="w-4 h-4" />
+            <span>GitHub</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-muted)]" />
+          </a>
 
-      {/* ABOUT & ARCHITECTURAL PILLARS */}
-      <section id="sobre" className="scroll-mt-24 space-y-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          <div className="lg:col-span-5 space-y-4">
-            <div className="inline-flex items-center gap-2 text-xs font-mono-code uppercase tracking-wider text-emerald-400">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>
-                {lang === "pt"
-                  ? "01 / Sobre & Visão de Engenharia"
-                  : "01 / About & Engineering Vision"}
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
-              {lang === "pt" ? (
-                <>
-                  Arquitetura resiliente para{" "}
-                  <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    produtos de missão crítica
-                  </span>
-                  .
-                </>
-              ) : (
-                <>
-                  Resilient architecture for{" "}
-                  <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    mission-critical products
-                  </span>
-                  .
-                </>
-              )}
-            </h2>
-            <div className="space-y-4 text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed pt-2">
-              {PROFILE.about[lang].map((paragraph, idx) => (
-                <p key={idx}>{paragraph}</p>
-              ))}
-            </div>
-          </div>
-
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {PROFILE.pillars.map((pillar, i) => (
-              <div
-                key={i}
-                className="surface-card rounded-2xl p-6 flex flex-col justify-between space-y-5"
-              >
-                <div className="space-y-3">
-                  <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 font-mono-code text-xs font-bold">
-                    0{i + 1}
-                  </div>
-                  <h3 className="text-lg font-semibold text-[var(--text-primary)]">
-                    {pillar.title[lang]}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-                    {pillar.description[lang]}
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[var(--border-subtle)]">
-                  {pillar.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-0.5 rounded-md text-[11px] font-mono-code bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border-subtle)]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CAREER & EXPERIENCE TIMELINE */}
-      <section id="experiencia" className="scroll-mt-24 space-y-10">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 text-xs font-mono-code uppercase tracking-wider text-emerald-400">
-              <Briefcase className="w-3.5 h-3.5" />
-              <span>
-                {lang === "pt"
-                  ? "02 / Trajetória Profissional"
-                  : "02 / Career & Experience"}
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
-              {lang === "pt" ? (
-                <>
-                  Impacto em{" "}
-                  <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    grandes ecossistemas
-                  </span>
-                </>
-              ) : (
-                <>
-                  Impact across{" "}
-                  <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    global ecosystems
-                  </span>
-                </>
-              )}
-            </h2>
-          </div>
+          <a
+            href="https://x.com/gstvribs"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          >
+            <XIcon className="w-3.5 h-3.5" />
+            <span>X / Twitter</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-muted)]" />
+          </a>
 
           <a
             href="https://www.linkedin.com/in/gustavo-ribeiro-miranda/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium surface-card text-[var(--text-primary)] hover:border-emerald-500/40 self-start sm:self-auto"
+            className="inline-flex items-center gap-1.5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
           >
-            <LinkedInIcon className="w-4 h-4 text-sky-400" />
-            <span>
-              {lang === "pt"
-                ? "Ver perfil completo no LinkedIn"
-                : "View full profile on LinkedIn"}
-            </span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <LinkedInIcon className="w-4 h-4" />
+            <span>LinkedIn</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-muted)]" />
           </a>
-        </div>
-
-        <div className="space-y-5">
-          {PROFILE.experiences.map((exp, idx) => (
-            <div
-              key={exp.company}
-              className="surface-card rounded-3xl p-6 sm:p-8 relative overflow-hidden"
-            >
-              {idx === 0 && (
-                <div className="absolute top-0 right-0 px-4 py-1.5 rounded-bl-2xl bg-emerald-500/15 border-b border-l border-emerald-500/30 text-emerald-400 font-mono-code text-[11px] font-semibold">
-                  {lang === "pt" ? "ATUAL • @UBER" : "CURRENT • @UBER"}
-                </div>
-              )}
-
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                <div className="lg:col-span-4 space-y-2">
-                  <div className="flex items-center gap-2.5">
-                    <a
-                      href={exp.companyUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xl font-bold text-[var(--text-primary)] hover:text-emerald-400 transition-colors inline-flex items-center gap-1.5"
-                    >
-                      <span>{exp.company}</span>
-                      <ArrowUpRight className="w-4 h-4 text-[var(--text-muted)]" />
-                    </a>
-                  </div>
-                  <div className="text-sm font-medium text-emerald-400">
-                    {exp.role[lang]}
-                  </div>
-                  <div className="text-xs font-mono-code text-[var(--text-muted)]">
-                    {exp.period[lang]} • {exp.location}
-                  </div>
-                  <div className="pt-3 flex flex-wrap gap-1.5">
-                    {exp.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2.5 py-0.5 rounded-md text-[11px] font-mono-code bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border-subtle)]"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="lg:col-span-8 space-y-4">
-                  <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
-                    {exp.description[lang]}
-                  </p>
-                  <ul className="space-y-2.5">
-                    {exp.achievements[lang].map((item, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-2.5 text-xs sm:text-sm text-[var(--text-secondary)]"
-                      >
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* OPEN SOURCE & REPOSITORIES */}
-      <section id="projetos" className="scroll-mt-24 space-y-10">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 text-xs font-mono-code uppercase tracking-wider text-emerald-400">
-              <Code2 className="w-3.5 h-3.5" />
-              <span>
-                {lang === "pt"
-                  ? "03 / Open Source & Arquitetura"
-                  : "03 / Open Source & Architecture"}
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
-              {lang === "pt" ? (
-                <>
-                  Repositórios &{" "}
-                  <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    Provas de Conceito
-                  </span>
-                </>
-              ) : (
-                <>
-                  Repositories &{" "}
-                  <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    Proofs of Concept
-                  </span>
-                </>
-              )}
-            </h2>
-          </div>
 
           <a
-            href="https://github.com/gstvribs?tab=repositories"
+            href="https://medium.com/@gstvribs"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium surface-card text-[var(--text-primary)] hover:border-emerald-500/40 self-start sm:self-auto"
+            className="inline-flex items-center gap-1.5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
           >
-            <GitHubIcon className="w-4 h-4" />
-            <span>github.com/gstvribs</span>
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>Medium</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-muted)]" />
+          </a>
+        </div>
+      </section>
+
+      {/* COMPANIES & CLIENTS */}
+      <section className="space-y-3 pt-2 border-t border-[var(--border-subtle)]">
+        <div className="text-xs font-mono-code uppercase tracking-wider text-[var(--text-muted)]">
+          {lang === "pt"
+            ? "Empresas & Projetos Entregues"
+            : "Companies & Past Clients"}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3 pt-1">
+          {featuredClients.map((client) => (
+            <div
+              key={client.id}
+              className="px-4 py-2.5 rounded-xl surface-card border border-emerald-500/30 bg-emerald-500/5"
+            >
+              <BrandLogo id={client.id} featured />
+            </div>
+          ))}
+
+          {otherClients.map((client) => (
+            <div
+              key={client.id}
+              className="px-3.5 py-2.5 rounded-xl surface-card"
+            >
+              <BrandLogo id={client.id} featured={false} />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CAREER (COMPACT) */}
+      <section id="experiencia" className="scroll-mt-24 space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-sm font-mono-code uppercase tracking-wider text-[var(--text-muted)]">
+            {lang === "pt" ? "Carreira" : "Career"}
+          </h2>
+          <a
+            href="https://www.linkedin.com/in/gustavo-ribeiro-miranda/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-xs font-mono-code text-[var(--text-secondary)] hover:text-emerald-400 transition-colors"
+          >
+            <span>LinkedIn</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {PROFILE.projects.map((project) => (
+        <div className="divide-y divide-[var(--border-subtle)] border-y border-[var(--border-subtle)]">
+          {PROFILE.experiences.map((exp) => (
             <div
-              key={project.slug}
-              className="surface-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between space-y-6 group"
+              key={exp.company}
+              className="py-4 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2"
             >
-              <div className="space-y-4">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-2.5">
-                    <div className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                      <FolderGit2 className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h3 className="font-mono-code font-semibold text-base text-[var(--text-primary)] group-hover:text-emerald-400 transition-colors">
-                        {project.name}
-                      </h3>
-                      <span className="text-[11px] font-mono-code text-[var(--text-muted)]">
-                        {project.language}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="text-sm font-medium text-[var(--text-primary)]">
-                  {project.tagline[lang]}
-                </div>
-
-                <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-                  {project.description[lang]}
-                </p>
-              </div>
-
-              <div className="space-y-4 pt-3 border-t border-[var(--border-subtle)]">
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="px-2 py-0.5 rounded-md text-[11px] font-mono-code bg-[var(--bg-elevated)] text-[var(--text-secondary)]"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center gap-3">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
                   <a
-                    href={project.repoUrl}
+                    href={exp.companyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400 hover:text-emerald-300"
+                    className="font-semibold text-sm text-[var(--text-primary)] hover:text-emerald-400 transition-colors"
                   >
-                    <GitHubIcon className="w-3.5 h-3.5" />
-                    <span>
-                      {lang === "pt"
-                        ? "Ver Código no GitHub"
-                        : "View Source on GitHub"}
-                    </span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    {exp.company}
                   </a>
-
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span>Docs / Live Demo</span>
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* TALKS, PODCASTS & COMMUNITY */}
-      <section id="palestras" className="scroll-mt-24 space-y-10">
-        <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 text-xs font-mono-code uppercase tracking-wider text-emerald-400">
-            <Mic className="w-3.5 h-3.5" />
-            <span>
-              {lang === "pt"
-                ? "04 / Palestras, Podcasts & Comunidade"
-                : "04 / Talks, Podcasts & Community"}
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
-            {lang === "pt" ? (
-              <>
-                Compartilhando conhecimento no{" "}
-                <span className="font-serif-editorial italic font-normal text-emerald-400">
-                  palco e no microfone
-                </span>
-              </>
-            ) : (
-              <>
-                Sharing insights on{" "}
-                <span className="font-serif-editorial italic font-normal text-emerald-400">
-                  stage and airwaves
-                </span>
-              </>
-            )}
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {PROFILE.talksAndMedia.map((item) => (
-            <div
-              key={item.id}
-              className="surface-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between space-y-5"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono-code bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    {item.type === "talk" && <Video className="w-3.5 h-3.5" />}
-                    {item.type === "podcast" && (
-                      <Headphones className="w-3.5 h-3.5" />
-                    )}
-                    {item.type === "slides" && (
-                      <Layers className="w-3.5 h-3.5" />
-                    )}
-                    <span>{item.badge[lang]}</span>
-                  </span>
-                  <span className="text-xs font-mono-code text-[var(--text-muted)]">
-                    {item.date}
+                  <span className="text-[var(--text-muted)]">·</span>
+                  <span className="text-xs font-mono-code text-[var(--text-secondary)]">
+                    {exp.role[lang]}
                   </span>
                 </div>
-
-                {item.thumbnail && (
-                  <div
-                    onClick={() => setActiveVideoModal(true)}
-                    className="relative rounded-2xl overflow-hidden border border-[var(--border-subtle)] group cursor-pointer aspect-video bg-black"
-                  >
-                    <img
-                      src={item.thumbnail}
-                      alt={item.title}
-                      className="w-full h-full object-cover opacity-85 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-center justify-center">
-                      <div className="w-14 h-14 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                        <Play className="w-6 h-6 fill-slate-950 ml-0.5" />
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                <div>
-                  <h3 className="text-xl font-bold text-[var(--text-primary)]">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs font-mono-code text-[var(--text-muted)] mt-1">
-                    {item.event}
-                  </p>
-                </div>
-
-                <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-                  {item.description[lang]}
+                <p className="text-xs sm:text-sm text-[var(--text-secondary)]">
+                  {exp.summary[lang]}
                 </p>
-
-                {item.id === "realtalk-js-ep88" && showSpotifyEmbed && (
-                  <div className="pt-2">
-                    <iframe
-                      style={{ borderRadius: "12px" }}
-                      src="https://open.spotify.com/embed/episode/2yplPmiiJ1x8YCJDj9hsT6?utm_source=generator&theme=0"
-                      width="100%"
-                      height="152"
-                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                      loading="lazy"
-                      title="Real Talk JavaScript Episode 88"
-                    />
-                  </div>
-                )}
               </div>
-
-              <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-[var(--border-subtle)]">
-                {item.id === "reactconf-br-2020" && (
-                  <button
-                    type="button"
-                    onClick={() => setActiveVideoModal(true)}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-colors cursor-pointer"
-                  >
-                    <Play className="w-3.5 h-3.5 fill-slate-950" />
-                    <span>
-                      {lang === "pt" ? "Assistir Palestra" : "Watch Talk"}
-                    </span>
-                  </button>
-                )}
-
-                {item.id === "realtalk-js-ep88" && (
-                  <button
-                    type="button"
-                    onClick={() => setShowSpotifyEmbed((v) => !v)}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-colors cursor-pointer"
-                  >
-                    <Headphones className="w-3.5 h-3.5" />
-                    <span>
-                      {showSpotifyEmbed
-                        ? lang === "pt"
-                          ? "Ocultar Player"
-                          : "Hide Player"
-                        : lang === "pt"
-                        ? "Ouvir Aqui (Spotify)"
-                        : "Listen Here (Spotify)"}
-                    </span>
-                  </button>
-                )}
-
-                <a
-                  href={item.primaryUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium bg-[var(--bg-elevated)] text-[var(--text-primary)] border border-[var(--border-subtle)] hover:border-emerald-500/40"
-                >
-                  <span>
-                    {item.type === "talk"
-                      ? lang === "pt"
-                        ? "Abrir Link Oficial"
-                        : "Open Official Link"
-                      : item.type === "podcast"
-                      ? "Spotify"
-                      : lang === "pt"
-                      ? "Abrir Apresentação"
-                      : "Open Presentation"}
-                  </span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
-
-                {item.secondaryUrl && item.secondaryLabel && (
-                  <a
-                    href={item.secondaryUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-medium text-[var(--text-secondary)] hover:text-emerald-400"
-                  >
-                    <span>{item.secondaryLabel[lang]}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* BLOG & WRITING SECTION */}
-      <section id="blog" className="scroll-mt-24 space-y-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 text-xs font-mono-code uppercase tracking-wider text-emerald-400">
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>
-                {lang === "pt"
-                  ? "05 / Blog & Artigos Técnicos"
-                  : "05 / Technical Blog & Writing"}
+              <span className="text-xs font-mono-code text-[var(--text-muted)] shrink-0">
+                {exp.period[lang]}
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
-              {lang === "pt" ? (
-                <>
-                  Publicações sobre{" "}
-                  <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    arquitetura, engenharia & web em escala
-                  </span>
-                </>
-              ) : (
-                <>
-                  Writings on{" "}
-                  <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    architecture, engineering & web at scale
-                  </span>
-                </>
-              )}
-            </h2>
-          </div>
+          ))}
+        </div>
+      </section>
 
-          <div className="flex flex-wrap items-center gap-2.5">
+      {/* BLOG POSTS */}
+      <section id="blog" className="scroll-mt-24 space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-sm font-mono-code uppercase tracking-wider text-[var(--text-muted)]">
+            {lang === "pt" ? "Escrita & Blog" : "Writing & Blog"}
+          </h2>
+
+          <div className="flex items-center gap-3">
             <Link
               href="/studio"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-colors"
+              className="inline-flex items-center gap-1 text-xs font-mono-code text-emerald-400 hover:text-emerald-300"
             >
               <PenSquare className="w-3.5 h-3.5" />
-              <span>
-                {lang === "pt" ? "Escrever Novo Post" : "Write New Post"}
-              </span>
+              <span>{lang === "pt" ? "Novo post" : "New post"}</span>
             </Link>
-
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium surface-card text-[var(--text-primary)] hover:border-emerald-500/40"
+              className="inline-flex items-center gap-1 text-xs font-mono-code text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             >
               <span>
                 {lang === "pt"
-                  ? `Ver todos os ${allPosts.length} artigos`
-                  : `View all ${allPosts.length} articles`}
+                  ? `Todos (${allPosts.length})`
+                  : `All (${allPosts.length})`}
               </span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="divide-y divide-[var(--border-subtle)] border-y border-[var(--border-subtle)]">
           {featuredPosts.map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="surface-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between space-y-5 group"
+              className="py-3.5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-4 group"
             >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between gap-2 text-xs font-mono-code text-[var(--text-muted)]">
-                  <span className="inline-flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>{post.date}</span>
-                  </span>
-                  <span className="inline-flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" />
-                    <span>{post.readingTime}</span>
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-bold text-[var(--text-primary)] group-hover:text-emerald-400 transition-colors leading-snug">
-                  {post.title}
-                </h3>
-
-                <p className="text-xs sm:text-sm text-[var(--text-secondary)] line-clamp-3 leading-relaxed">
-                  {lang === "pt" ? post.excerpt : post.excerptEn || post.excerpt}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between gap-2">
-                <div className="flex flex-wrap gap-1.5">
-                  {post.tags.slice(0, 3).map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-0.5 rounded-md text-[11px] font-mono-code bg-[var(--bg-elevated)] text-[var(--text-secondary)]"
-                    >
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-                <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-400 group-hover:translate-x-1 transition-transform shrink-0">
-                  <span>{lang === "pt" ? "Ler artigo" : "Read post"}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </span>
-              </div>
+              <span className="text-sm font-medium text-[var(--text-primary)] group-hover:text-emerald-400 transition-colors">
+                {post.title}
+              </span>
+              <span className="text-xs font-mono-code text-[var(--text-muted)] shrink-0">
+                {post.date} · {post.readingTime}
+              </span>
             </Link>
           ))}
         </div>
+      </section>
 
-        {/* Authoring Callout Banner */}
-        <div className="surface-card rounded-3xl p-6 sm:p-8 border border-emerald-500/25 bg-gradient-to-r from-emerald-500/10 via-transparent to-sky-500/5 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-          <div className="space-y-2 max-w-2xl">
-            <div className="inline-flex items-center gap-2 text-xs font-mono-code text-emerald-400">
-              <FileCode2 className="w-4 h-4" />
-              <span>
-                {lang === "pt"
-                  ? "MOTOR DE BLOG INTEGRADO (MARKDOWN + STUDIO VISUAL)"
-                  : "BUILT-IN BLOG ENGINE (MARKDOWN + VISUAL STUDIO)"}
-              </span>
+      {/* TALKS & PODCASTS */}
+      <section id="palestras" className="scroll-mt-24 space-y-4">
+        <h2 className="text-sm font-mono-code uppercase tracking-wider text-[var(--text-muted)]">
+          {lang === "pt" ? "Palestras & Podcasts" : "Talks & Podcasts"}
+        </h2>
+
+        <div className="divide-y divide-[var(--border-subtle)] border-y border-[var(--border-subtle)]">
+          {PROFILE.talksAndMedia.map((item) => (
+            <div key={item.id} className="py-3.5 space-y-2">
+              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                <div>
+                  <a
+                    href={item.primaryUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-medium text-[var(--text-primary)] hover:text-emerald-400 transition-colors inline-flex items-center gap-1.5"
+                  >
+                    <span>{item.title}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-muted)]" />
+                  </a>
+                  <div className="text-xs text-[var(--text-muted)]">
+                    {item.event}
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 text-xs font-mono-code shrink-0">
+                  {item.id === "reactconf-br-2020" && (
+                    <button
+                      type="button"
+                      onClick={() => setActiveVideoModal(true)}
+                      className="inline-flex items-center gap-1 text-emerald-400 hover:underline cursor-pointer"
+                    >
+                      <Play className="w-3 h-3 fill-emerald-400" />
+                      <span>{lang === "pt" ? "Vídeo" : "Video"}</span>
+                    </button>
+                  )}
+
+                  {item.id === "realtalk-js-ep88" && (
+                    <button
+                      type="button"
+                      onClick={() => setShowSpotifyEmbed((v) => !v)}
+                      className="inline-flex items-center gap-1 text-emerald-400 hover:underline cursor-pointer"
+                    >
+                      <Headphones className="w-3 h-3" />
+                      <span>{showSpotifyEmbed ? "Fechar" : "Ouvir"}</span>
+                    </button>
+                  )}
+
+                  {item.secondaryUrl && item.secondaryLabel && (
+                    <a
+                      href={item.secondaryUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                    >
+                      {item.secondaryLabel[lang]}
+                    </a>
+                  )}
+                  <span className="text-[var(--text-muted)]">{item.date}</span>
+                </div>
+              </div>
+
+              {item.id === "realtalk-js-ep88" && showSpotifyEmbed && (
+                <div className="pt-2">
+                  <iframe
+                    style={{ borderRadius: "12px" }}
+                    src="https://open.spotify.com/embed/episode/2yplPmiiJ1x8YCJDj9hsT6?utm_source=generator&theme=0"
+                    width="100%"
+                    height="152"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                    title="Real Talk JavaScript Episode 88"
+                  />
+                </div>
+              )}
             </div>
-            <h3 className="text-xl font-bold text-[var(--text-primary)]">
-              {lang === "pt"
-                ? "Publique novos posts pelo navegador ou via CLI em segundos"
-                : "Publish new blog posts from your browser or via CLI in seconds"}
-            </h3>
-            <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-              {lang === "pt"
-                ? 'Use o Blog Studio interativo (/studio) com preview em tempo real para salvar direto em content/posts/*.md, ou rode npm run new:post "Título do Artigo" no terminal.'
-                : 'Use the interactive Blog Studio (/studio) with live Markdown preview to save directly into content/posts/*.md, or run npm run new:post "Article Title" in your terminal.'}
-            </p>
-          </div>
+          ))}
+        </div>
+      </section>
 
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <Link
-              href="/studio"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-colors"
+      {/* OPEN SOURCE PROJECTS */}
+      <section id="projetos" className="scroll-mt-24 space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-sm font-mono-code uppercase tracking-wider text-[var(--text-muted)]">
+            {lang === "pt" ? "Projetos Open Source" : "Open Source"}
+          </h2>
+          <a
+            href="https://github.com/gstvribs?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-xs font-mono-code text-[var(--text-secondary)] hover:text-emerald-400 transition-colors"
+          >
+            <span>github.com/gstvribs</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {PROFILE.projects.map((project) => (
+            <a
+              key={project.slug}
+              href={project.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="surface-card rounded-2xl p-4 flex flex-col justify-between gap-2 group"
             >
-              <PenSquare className="w-4 h-4" />
-              <span>
-                {lang === "pt" ? "Abrir Blog Studio" : "Open Blog Studio"}
+              <div className="space-y-1">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="font-mono-code text-xs font-semibold text-[var(--text-primary)] group-hover:text-emerald-400 transition-colors truncate">
+                    {project.name}
+                  </span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-muted)] shrink-0" />
+                </div>
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                  {project.description[lang]}
+                </p>
+              </div>
+              <span className="text-[11px] font-mono-code text-[var(--text-muted)]">
+                {project.language}
               </span>
-            </Link>
-          </div>
+            </a>
+          ))}
         </div>
       </section>
 
@@ -1066,20 +468,18 @@ export function PortfolioHome({
           onClick={() => setActiveVideoModal(false)}
         >
           <div
-            className="w-full max-w-4xl rounded-3xl overflow-hidden surface-card border border-[var(--border-strong)] shadow-2xl"
+            className="w-full max-w-4xl rounded-2xl overflow-hidden surface-card border border-[var(--border-strong)] shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between px-5 py-3.5 border-b border-[var(--border-subtle)]">
-              <div>
-                <h4 className="text-sm font-semibold text-[var(--text-primary)]">
-                  Monorepo + Design Systems = ❤ — Gustavo Miranda (ReactConf BR
-                  2020)
-                </h4>
-              </div>
+            <div className="flex items-center justify-between px-5 py-3 border-b border-[var(--border-subtle)]">
+              <h4 className="text-sm font-medium text-[var(--text-primary)]">
+                Monorepo + Design Systems = ❤ — Gustavo Miranda (ReactConf BR
+                2020)
+              </h4>
               <button
                 type="button"
                 onClick={() => setActiveVideoModal(false)}
-                className="p-1.5 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] cursor-pointer"
+                className="p-1 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>

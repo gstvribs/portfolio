@@ -91,7 +91,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur-xl border-b border-[var(--border-subtle)] bg-[var(--bg-primary)]/80">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-3">
         {/* Brand Identity */}
         <Link
           href="/"
