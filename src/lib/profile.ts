@@ -183,18 +183,52 @@ export const PROFILE = {
       company: "CI&T",
       companyUrl: "https://ciandt.com",
       role: {
-        pt: "Software Engineer (ex @CI&T)",
-        en: "Software Engineer (ex @CI&T)",
+        pt: "Software Engineer / Tech Lead (ex @CI&T)",
+        en: "Software Engineer / Tech Lead (ex @CI&T)",
       },
       period: {
         pt: "Anterior",
         en: "Previous",
       },
       summary: {
-        pt: "Arquitetura e entrega para clientes globais (Google, Grupo Boticário, Bradesco, Mitsui) e atuação como especialista em Design Systems.",
-        en: "Architecture and delivery for global clients (Google, Grupo Boticário, Bradesco, Mitsui) and Design Systems specialist.",
+        pt: "Liderou um time de 5+ engenheiros construindo sistemas para o Google (Trust & Safety e Google Cloud Marketing), além de projetos para Grupo Boticário, Bradesco e Mitsui.",
+        en: "Led a team of 5+ engineers building systems for Google (Trust & Safety and Google Cloud Marketing), alongside projects for Grupo Boticário, Bradesco, and Mitsui.",
       },
-      stack: ["React", "TypeScript", "Node.js", "Angular", "Monorepo", "CI/CD"],
+      subRoles: [
+        {
+          team: {
+            pt: "Google · Trust & Safety e Google Cloud Marketing",
+            en: "Google · Trust & Safety & Google Cloud Marketing",
+          },
+          period: {
+            pt: "Tech Lead & Platform Strategy",
+            en: "Tech Lead & Platform Strategy",
+          },
+          bullets: {
+            pt: [
+              "Construiu o Design System de Trust & Safety usado internamente por múltiplos times do Google e criou a estratégia de plataforma de curto e longo prazo para unificar as ferramentas internas de revisão.",
+              "Projetou e implementou o rollout de atualizações de políticas de plataforma em 10 produtos externos do Google (incluindo Ads, Workspace e YouTube), transformando soluções pontuais em plataformas compartilhadas.",
+              "Colaboração direta com a liderança de T&S do Google — incluindo participação em hackathon em Nova York para definir a visão de longo prazo de plataformização.",
+              "Estruturou o time (contratação, promoções, onboarding no padrão de engenharia do Google), gerenciando roadmap, entregas e evolução de carreira de cada engenheiro.",
+            ],
+            en: [
+              "Built the Trust & Safety design system used internally by multiple Google teams and created the short- and long-term platform strategy to unify Google's internal review tools into one solution.",
+              "Designed and implemented how platform policy updates roll out across 10 of Google's external-facing tools (including Ads, Workspace, and YouTube), turning one-off solutions into shared platforms.",
+              "Close collaboration with Google T&S Leadership, taking part in a Google hackathon in New York that set the short- and long-term vision for Trust & Safety platformization.",
+              "Built and led the team: hired, promoted, set up Google-grade engineering onboarding, and managed roadmap, delivery schedule, and career growth.",
+            ],
+          },
+        },
+      ],
+      stack: [
+        "Google Internal Tooling",
+        "Platform Strategy",
+        "TypeScript",
+        "React",
+        "Angular",
+        "Design Systems",
+        "Tech Leadership",
+      ],
     },
   ] as ExperienceItem[],
   projects: [
