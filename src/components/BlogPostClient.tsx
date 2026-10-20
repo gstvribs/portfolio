@@ -229,10 +229,10 @@ export function BlogPostClient({
                       Gustavo Miranda
                     </h3>
                     <p className="text-xs font-mono-code text-emerald-400">
-                      Software Engineer @ Uber • @gstvribs
+                      Software Engineer @ Uber • ex @CI&amp;T • @gstvribs
                     </p>
                     <p className="text-xs text-[var(--text-secondary)] mt-1">
-                      Design Systems, Monorepos & Frontend Architecture
+                      Global-Scale Software Engineering &amp; Platform Architecture
                     </p>
                   </div>
                 </div>

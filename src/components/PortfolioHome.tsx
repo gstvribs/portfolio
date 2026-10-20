@@ -7,6 +7,7 @@ import {
   ArrowUpRight,
   BookOpen,
   Briefcase,
+  Building2,
   Calendar,
   CheckCircle2,
   Clock,
@@ -20,15 +21,93 @@ import {
   PenSquare,
   Play,
   Sparkles,
-  Star,
   Terminal,
   Video,
   X,
 } from "lucide-react";
-import { PROFILE } from "@/lib/profile";
+import { PROFILE, type ClientBrand } from "@/lib/profile";
 import type { BlogPostMeta } from "@/lib/posts";
 import { usePreferences } from "./PreferencesProvider";
 import { GitHubIcon, LinkedInIcon, XIcon } from "./Navbar";
+
+function BrandLogo({ id }: { id: ClientBrand["id"] }) {
+  switch (id) {
+    case "uber":
+      return (
+        <div className="flex items-center gap-2.5">
+          <div className="w-10 h-10 rounded-xl bg-white text-black flex items-center justify-center font-sans font-black text-sm tracking-tighter shadow-sm">
+            Uber
+          </div>
+          <span className="text-xl font-bold tracking-tight text-[var(--text-primary)]">
+            Uber
+          </span>
+        </div>
+      );
+    case "google":
+      return (
+        <div className="flex items-center gap-2.5">
+          <div className="w-10 h-10 rounded-xl bg-white/95 flex items-center justify-center shadow-sm p-2">
+            <svg viewBox="0 0 24 24" className="w-full h-full" aria-hidden="true">
+              <path
+                fill="#4285F4"
+                d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"
+              />
+              <path
+                fill="#34A853"
+                d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"
+              />
+              <path
+                fill="#FBBC05"
+                d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"
+              />
+              <path
+                fill="#EA4335"
+                d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"
+              />
+            </svg>
+          </div>
+          <span className="text-xl font-bold tracking-tight text-[var(--text-primary)]">
+            Google
+          </span>
+        </div>
+      );
+    case "boticario":
+      return (
+        <div className="flex items-center gap-2.5">
+          <div className="w-9 h-9 rounded-xl bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 flex items-center justify-center font-serif-editorial italic font-bold text-lg">
+            GB
+          </div>
+          <span className="text-base font-bold tracking-tight text-[var(--text-primary)]">
+            Grupo Boticário
+          </span>
+        </div>
+      );
+    case "bradesco":
+      return (
+        <div className="flex items-center gap-2.5">
+          <div className="w-9 h-9 rounded-xl bg-rose-600/20 border border-rose-500/30 text-rose-400 flex items-center justify-center">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className="w-5 h-5">
+              <path d="M12 3v18M6 8c0-2.5 2.5-4 6-4s6 1.5 6 4M5 14c1.5-2 4-3 7-3s5.5 1 7 3" strokeLinecap="round" />
+            </svg>
+          </div>
+          <span className="text-base font-bold tracking-tight text-[var(--text-primary)]">
+            Bradesco
+          </span>
+        </div>
+      );
+    case "mitsui":
+      return (
+        <div className="flex items-center gap-2.5">
+          <div className="w-9 h-9 rounded-xl bg-sky-500/20 border border-sky-500/30 text-sky-400 flex items-center justify-center font-mono-code font-bold text-xs">
+            M&amp;Co
+          </div>
+          <span className="text-base font-bold tracking-tight text-[var(--text-primary)]">
+            Mitsui &amp; Co.
+          </span>
+        </div>
+      );
+  }
+}
 
 export function PortfolioHome({
   initialPosts,
@@ -47,9 +126,11 @@ export function PortfolioHome({
   }, [initialPosts, customPosts]);
 
   const featuredPosts = allPosts.slice(0, 4);
+  const featuredClients = PROFILE.clients.filter((c) => c.featured);
+  const enterpriseClients = PROFILE.clients.filter((c) => !c.featured);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-12 space-y-28">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-12 space-y-24">
       {/* HERO SECTION */}
       <section className="relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
@@ -62,26 +143,30 @@ export function PortfolioHome({
               </span>
               <span className="text-[var(--text-muted)]">•</span>
               <span className="text-[var(--text-secondary)]">
-                {PROFILE.location} ({PROFILE.pronouns})
+                {PROFILE.previousBadge}
+              </span>
+              <span className="text-[var(--text-muted)]">•</span>
+              <span className="text-[var(--text-secondary)]">
+                {PROFILE.location}
               </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-[3.55rem] font-bold tracking-tight text-[var(--text-primary)] leading-[1.08]">
               {lang === "pt" ? (
                 <>
-                  Arquitetura de software em{" "}
+                  Engenharia de software em{" "}
                   <span className="font-serif-editorial italic font-normal text-emerald-400">
                     escala global
                   </span>
-                  , Design Systems & excelência em frontend.
+                  , sistemas distribuídos & alta performance.
                 </>
               ) : (
                 <>
-                  Software architecture at{" "}
+                  Software engineering at{" "}
                   <span className="font-serif-editorial italic font-normal text-emerald-400">
                     global scale
                   </span>
-                  , Design Systems & frontend craft.
+                  , distributed systems & high performance.
                 </>
               )}
             </h1>
@@ -118,12 +203,12 @@ export function PortfolioHome({
               </Link>
 
               <a
-                href="#projetos"
+                href="#experiencia"
                 className="inline-flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium surface-card text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               >
-                <FolderGit2 className="w-4 h-4" />
+                <Briefcase className="w-4 h-4" />
                 <span>
-                  {lang === "pt" ? "Ver Projetos" : "View Projects"}
+                  {lang === "pt" ? "Ver Carreira" : "View Career"}
                 </span>
               </a>
             </div>
@@ -213,8 +298,8 @@ export function PortfolioHome({
                   <p className="text-xs font-mono-code text-emerald-400 mt-0.5">
                     {PROFILE.role[lang]}
                   </p>
-                  <p className="text-xs text-[var(--text-muted)] mt-1">
-                    ex-Master Software Engineer @ CI&T
+                  <p className="text-xs font-mono-code text-[var(--text-muted)] mt-1">
+                    {PROFILE.previousBadge}
                   </p>
                 </div>
               </div>
@@ -242,22 +327,21 @@ export function PortfolioHome({
                     <span className="text-amber-300">&quot;@uber&quot;</span>,
                   </div>
                   <div className="pl-4">
-                    focus: [
-                    <span className="text-amber-300">
-                      &quot;Design Systems&quot;
-                    </span>
-                    ,{" "}
-                    <span className="text-amber-300">&quot;Monorepos&quot;</span>
-                    , <span className="text-amber-300">&quot;React&quot;</span>
-                    ],
+                    background:{" "}
+                    <span className="text-amber-300">&quot;ex @CI&amp;T&quot;</span>,
                   </div>
                   <div className="pl-4">
-                    speaker: [
+                    featuredClients: [
+                    <span className="text-amber-300">&quot;Uber&quot;</span>,{" "}
+                    <span className="text-amber-300">&quot;Google&quot;</span>],
+                  </div>
+                  <div className="pl-4">
+                    enterprise: [
                     <span className="text-amber-300">
-                      &quot;ReactConf BR&quot;
+                      &quot;Grupo Boticário&quot;
                     </span>
-                    , <span className="text-amber-300">&quot;TDC&quot;</span>,{" "}
-                    <span className="text-amber-300">&quot;Web Rush&quot;</span>
+                    , <span className="text-amber-300">&quot;Bradesco&quot;</span>
+                    , <span className="text-amber-300">&quot;Mitsui&quot;</span>
                     ],
                   </div>
                   <div>{"};"}</div>
@@ -285,6 +369,82 @@ export function PortfolioHome({
         </div>
       </section>
 
+      {/* GLOBAL BRANDS & ENTERPRISE CLIENTS SHOWCASE */}
+      <section id="clientes" className="scroll-mt-24 space-y-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 text-xs font-mono-code uppercase tracking-wider text-emerald-400">
+              <Building2 className="w-3.5 h-3.5" />
+              <span>
+                {lang === "pt"
+                  ? "Empresas & Projetos Entregues"
+                  : "Companies & Enterprise Impact"}
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)]">
+              {lang === "pt" ? (
+                <>
+                  Engenharia em escala para{" "}
+                  <span className="font-serif-editorial italic font-normal text-emerald-400">
+                    gigantes globais e líderes de mercado
+                  </span>
+                </>
+              ) : (
+                <>
+                  Engineering at scale for{" "}
+                  <span className="font-serif-editorial italic font-normal text-emerald-400">
+                    global tech giants and market leaders
+                  </span>
+                </>
+              )}
+            </h2>
+          </div>
+          <span className="text-xs font-mono-code text-[var(--text-muted)]">
+            Uber • Google • Grupo Boticário • Bradesco • Mitsui
+          </span>
+        </div>
+
+        {/* Highlighted Tier-1 Giants: Uber & Google */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {featuredClients.map((client) => (
+            <div
+              key={client.id}
+              className="surface-card rounded-3xl p-6 sm:p-7 relative overflow-hidden border border-emerald-500/30 bg-gradient-to-br from-emerald-500/8 via-transparent to-sky-500/5"
+            >
+              <div className="flex items-center justify-between gap-3 mb-4">
+                <BrandLogo id={client.id} />
+                <span className="px-3 py-1 rounded-full text-[11px] font-mono-code font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                  {client.badge[lang]}
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                {client.description[lang]}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Enterprise Clients Grid: Grupo Boticário, Bradesco, Mitsui */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {enterpriseClients.map((client) => (
+            <div
+              key={client.id}
+              className="surface-card rounded-2xl p-5 flex flex-col justify-between space-y-3"
+            >
+              <div className="flex items-center justify-between gap-2">
+                <BrandLogo id={client.id} />
+                <span className="px-2 py-0.5 rounded-md text-[10px] font-mono-code bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border-subtle)]">
+                  {client.badge[lang]}
+                </span>
+              </div>
+              <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                {client.description[lang]}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ABOUT & ARCHITECTURAL PILLARS */}
       <section id="sobre" className="scroll-mt-24 space-y-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
@@ -300,17 +460,17 @@ export function PortfolioHome({
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
               {lang === "pt" ? (
                 <>
-                  Onde rigor técnico encontra{" "}
+                  Arquitetura resiliente para{" "}
                   <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    design sistemático
+                    produtos de missão crítica
                   </span>
                   .
                 </>
               ) : (
                 <>
-                  Where engineering rigor meets{" "}
+                  Resilient architecture for{" "}
                   <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    systematic design
+                    mission-critical products
                   </span>
                   .
                 </>
@@ -485,14 +645,14 @@ export function PortfolioHome({
                 <>
                   Repositórios &{" "}
                   <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    Design Systems
+                    Provas de Conceito
                   </span>
                 </>
               ) : (
                 <>
                   Repositories &{" "}
                   <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    Design Systems
+                    Proofs of Concept
                   </span>
                 </>
               )}
@@ -532,11 +692,6 @@ export function PortfolioHome({
                       </span>
                     </div>
                   </div>
-
-                  <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono-code bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                    <Star className="w-3.5 h-3.5 fill-amber-400" />
-                    <span>{project.stars}</span>
-                  </div>
                 </div>
 
                 <div className="text-sm font-medium text-[var(--text-primary)]">
@@ -569,7 +724,9 @@ export function PortfolioHome({
                   >
                     <GitHubIcon className="w-3.5 h-3.5" />
                     <span>
-                      {lang === "pt" ? "Ver Código no GitHub" : "View Source on GitHub"}
+                      {lang === "pt"
+                        ? "Ver Código no GitHub"
+                        : "View Source on GitHub"}
                     </span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
@@ -778,14 +935,14 @@ export function PortfolioHome({
                 <>
                   Publicações sobre{" "}
                   <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    arquitetura, React & Design Systems
+                    arquitetura, engenharia & web em escala
                   </span>
                 </>
               ) : (
                 <>
                   Writings on{" "}
                   <span className="font-serif-editorial italic font-normal text-emerald-400">
-                    architecture, React & Design Systems
+                    architecture, engineering & web at scale
                   </span>
                 </>
               )}

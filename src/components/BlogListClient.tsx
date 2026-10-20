@@ -79,8 +79,8 @@ export function BlogListClient({
               <BookOpen className="w-3.5 h-3.5" />
               <span>
                 {lang === "pt"
-                  ? "Engenharia, Arquitetura & Design Systems"
-                  : "Engineering, Architecture & Design Systems"}
+                  ? "Engenharia de Software, Arquitetura & Escala"
+                  : "Software Engineering, Architecture & Scale"}
               </span>
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
@@ -102,8 +102,8 @@ export function BlogListClient({
             </h1>
             <p className="text-sm sm:text-base text-[var(--text-secondary)] max-w-2xl">
               {lang === "pt"
-                ? "Reflexões práticas sobre Design Systems em monorepo, arquitetura React, Feature Toggles, CI/CD e engenharia de software em larga escala."
-                : "Practical deep dives into monorepo Design Systems, React architecture, Feature Toggles, CI/CD, and large-scale software engineering."}
+                ? "Reflexões práticas sobre engenharia de software em larga escala, arquitetura web, Feature Toggles, CI/CD, monorepos e aprendizados técnicos."
+                : "Practical deep dives into large-scale software engineering, web architecture, Feature Toggles, CI/CD, monorepos, and technical lessons."}
             </p>
           </div>
 

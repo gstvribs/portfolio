@@ -26,14 +26,14 @@ export function Footer() {
                   Gustavo Miranda
                 </h3>
                 <p className="text-xs font-mono-code text-[var(--text-muted)]">
-                  Software Engineer @ Uber • @gstvribs
+                  Software Engineer @ Uber • ex @CI&amp;T • @gstvribs
                 </p>
               </div>
             </div>
             <p className="text-sm text-[var(--text-secondary)] max-w-md leading-relaxed">
               {lang === "pt"
-                ? "Engenharia de software em escala global, Design Systems, monorepos e arquitetura frontend moderna."
-                : "Global-scale software engineering, Design Systems, monorepos, and modern frontend architecture."}
+                ? "Engenharia de software em escala global, sistemas distribuídos, arquitetura de plataformas e aplicações de alta performance."
+                : "Global-scale software engineering, distributed systems, platform architecture, and high-performance applications."}
             </p>
             <div className="flex flex-wrap items-center gap-2.5 pt-1">
               <a

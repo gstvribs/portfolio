@@ -36,13 +36,13 @@ export const metadata: Metadata = {
     template: "%s | Gustavo Miranda (@gstvribs)",
   },
   description:
-    "Personal portfolio, engineering architecture hub, talks, and blog of Gustavo Miranda (@gstvribs) — Software Engineer at Uber, Design Systems & Monorepo specialist.",
+    "Personal portfolio, engineering architecture hub, talks, and blog of Gustavo Miranda (@gstvribs) — Software Engineer at Uber (ex @CI&T).",
   keywords: [
     "Gustavo Miranda",
     "gstvribs",
     "Software Engineer Uber",
-    "Design Systems",
-    "Monorepo",
+    "Distributed Systems",
+    "Platform Architecture",
     "Frontend Architecture",
     "React",
     "TypeScript",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Gustavo Miranda (@gstvribs) — Software Engineer @ Uber",
     description:
-      "Global-scale software engineering, Design Systems, monorepo architectures, talks, and technical writing.",
+      "Global-scale software engineering, distributed systems, platform architecture, talks, and technical writing.",
     type: "website",
     locale: "pt_BR",
   },
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     creator: "@gstvribs",
     title: "Gustavo Miranda (@gstvribs) — Software Engineer @ Uber",
     description:
-      "Global-scale software engineering, Design Systems, monorepo architectures, talks, and technical writing.",
+      "Global-scale software engineering, distributed systems, platform architecture, talks, and technical writing.",
   },
 };
 
