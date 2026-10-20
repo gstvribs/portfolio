@@ -29,14 +29,20 @@ export interface ExperienceItem {
   stack: string[];
 }
 
+export interface ProjectLink {
+  label: string;
+  url: string;
+}
+
 export interface ProjectItem {
   name: string;
   slug: string;
   description: { pt: string; en: string };
   repoUrl: string;
   liveUrl?: string;
-  language: string;
+  category: { pt: string; en: string };
   badge?: { pt: string; en: string };
+  links?: ProjectLink[];
 }
 
 export interface TalkAndMediaItem {
@@ -196,13 +202,38 @@ export const PROFILE = {
       name: "SOPH — Sabedoria para Empreender",
       slug: "soph-sabedoria-para-empreender",
       description: {
-        pt: "Plataforma e comunidade de empreendedorismo com episódios do SOPH Cast, cursos, eventos e networking para impulsionar negócios com propósito.",
-        en: "Entrepreneurship platform and community featuring SOPH Cast podcast episodes, courses, events, and networking to empower purpose-driven businesses.",
+        pt: "Iniciativa de empreendedorismo com foco em retorno não-financeiro e impacto real: conteúdos práticos de IA para empreendedores (como o episódio 'A Revolução da IA'), episódios do SOPH Cast no YouTube e Spotify, cursos, eventos presenciais e networking.",
+        en: "Entrepreneurship initiative focused on non-financial returns and community impact: practical content on AI for entrepreneurs, SOPH Cast podcast episodes on YouTube and Spotify, courses, live events, and networking.",
       },
       repoUrl: "https://soph-site.lovable.app/",
       liveUrl: "https://soph-site.lovable.app/",
-      language: "React · TypeScript · Tailwind",
-      badge: { pt: "Projeto Pessoal · Live", en: "Personal Project · Live" },
+      category: {
+        pt: "Empreendedorismo · Retorno Não-Financeiro · IA para Empreendedores · Podcasts",
+        en: "Entrepreneurship · Non-Financial Returns · AI for Entrepreneurs · Podcasts",
+      },
+      badge: {
+        pt: "Comunidade & Empreendedorismo",
+        en: "Community & Entrepreneurship",
+      },
+      links: [
+        { label: "Site", url: "https://soph-site.lovable.app/" },
+        {
+          label: "Instagram (@soph.empreender)",
+          url: "https://www.instagram.com/soph.empreender",
+        },
+        {
+          label: "YouTube (@sophpodcast)",
+          url: "https://youtube.com/@sophpodcast",
+        },
+        {
+          label: "Spotify (SOPH Cast)",
+          url: "https://open.spotify.com/show/1dc6scXmA2a8s6qDHMf7Dt",
+        },
+        {
+          label: "TikTok",
+          url: "https://www.tiktok.com/@sophpodcast",
+        },
+      ],
     },
     {
       name: "monorepo-react-component-library",
@@ -213,7 +244,7 @@ export const PROFILE = {
       },
       repoUrl: "https://github.com/gstvribs/monorepo-react-component-library",
       liveUrl: "https://thedesignsystem.gustavoribeiro.dev/",
-      language: "React",
+      category: { pt: "React · Monorepo", en: "React · Monorepo" },
     },
     {
       name: "monorepo-angular-component-library",
@@ -224,7 +255,7 @@ export const PROFILE = {
       },
       repoUrl: "https://github.com/gstvribs/monorepo-angular-component-library",
       liveUrl: "https://thedesignsystem.gustavoribeiro.dev/",
-      language: "Angular / SCSS",
+      category: { pt: "Angular · SCSS", en: "Angular · SCSS" },
     },
   ] as ProjectItem[],
   talksAndMedia: [
