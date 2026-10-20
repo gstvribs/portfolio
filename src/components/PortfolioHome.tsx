@@ -147,23 +147,33 @@ export function PortfolioHome({
     <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-12 sm:pt-20 pb-16 space-y-16">
       {/* INTRO */}
       <section id="sobre" className="space-y-6">
-        <div className="flex items-center gap-4">
-          <img
-            src={PROFILE.avatar}
-            alt={PROFILE.name}
-            className="w-14 h-14 rounded-full object-cover border border-[var(--border-strong)]"
-          />
-          <div>
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)]">
-              {PROFILE.name}
-            </h1>
-            <div className="flex flex-wrap items-center gap-2 text-xs font-mono-code text-[var(--text-secondary)] mt-0.5">
-              <span className="text-emerald-400 font-medium">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5 pb-2">
+          <div className="space-y-2.5">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full surface-card text-xs font-mono-code">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[var(--text-primary)] font-medium">
                 {PROFILE.role[lang]}
               </span>
-              <span className="text-[var(--text-muted)]">•</span>
-              <span>{PROFILE.previousBadge}</span>
+              <span className="text-[var(--text-muted)]">·</span>
+              <span className="text-[var(--text-secondary)]">
+                {PROFILE.previousBadge}
+              </span>
             </div>
+
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-[-0.03em] text-[var(--text-primary)] leading-[1.08]">
+              Gustavo{" "}
+              <span className="font-serif-editorial italic font-normal text-emerald-400">
+                Miranda
+              </span>
+            </h1>
+          </div>
+
+          <div className="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 order-first sm:order-last">
+            <img
+              src={PROFILE.avatar}
+              alt={PROFILE.name}
+              className="w-full h-full rounded-2xl object-cover border border-[var(--border-strong)] shadow-lg"
+            />
           </div>
         </div>
 

@@ -95,32 +95,22 @@ export function Navbar() {
         {/* Brand Identity */}
         <Link
           href="/"
-          className="flex items-center gap-3 group focus:outline-none"
+          className="flex items-center gap-2.5 group focus:outline-none"
         >
-          <div className="relative w-9 h-9 shrink-0">
+          <div className="relative w-8 h-8 shrink-0">
             <img
               src="https://avatars.githubusercontent.com/u/7907966?v=4"
               alt="Gustavo Miranda"
               className="w-full h-full rounded-full object-cover border border-[var(--border-strong)] bg-[var(--bg-elevated)] group-hover:border-emerald-500/60 transition-colors"
             />
             <span
-              className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-500 ring-2 ring-[var(--bg-primary)]"
+              className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-[var(--bg-primary)]"
               title="Software Engineer @ Uber"
             />
           </div>
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <span className="font-semibold text-sm tracking-tight text-[var(--text-primary)] group-hover:text-emerald-400 transition-colors">
-                Gustavo Miranda
-              </span>
-              <span className="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-mono-code uppercase tracking-wider rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                @uber
-              </span>
-            </div>
-            <span className="text-[11px] font-mono-code text-[var(--text-muted)]">
-              @gstvribs
-            </span>
-          </div>
+          <span className="font-mono-code text-xs font-medium tracking-tight text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
+            @gstvribs
+          </span>
         </Link>
 
         {/* Primary Navigation */}
