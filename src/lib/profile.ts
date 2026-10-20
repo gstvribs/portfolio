@@ -36,6 +36,7 @@ export interface ProjectItem {
   repoUrl: string;
   liveUrl?: string;
   language: string;
+  badge?: { pt: string; en: string };
 }
 
 export interface TalkAndMediaItem {
@@ -191,6 +192,18 @@ export const PROFILE = {
     },
   ] as ExperienceItem[],
   projects: [
+    {
+      name: "SOPH — Sabedoria para Empreender",
+      slug: "soph-sabedoria-para-empreender",
+      description: {
+        pt: "Plataforma e comunidade de empreendedorismo com episódios do SOPH Cast, cursos, eventos e networking para impulsionar negócios com propósito.",
+        en: "Entrepreneurship platform and community featuring SOPH Cast podcast episodes, courses, events, and networking to empower purpose-driven businesses.",
+      },
+      repoUrl: "https://soph-site.lovable.app/",
+      liveUrl: "https://soph-site.lovable.app/",
+      language: "React · TypeScript · Tailwind",
+      badge: { pt: "Projeto Pessoal · Live", en: "Personal Project · Live" },
+    },
     {
       name: "dojo-contract-tests",
       slug: "dojo-contract-tests",

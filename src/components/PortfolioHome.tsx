@@ -468,11 +468,13 @@ export function PortfolioHome({
         </div>
       </section>
 
-      {/* OPEN SOURCE PROJECTS */}
+      {/* PROJECTS & OPEN SOURCE */}
       <section id="projetos" className="scroll-mt-24 space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-sm font-mono-code uppercase tracking-wider text-[var(--text-muted)]">
-            {lang === "pt" ? "Projetos Open Source" : "Open Source"}
+            {lang === "pt"
+              ? "Projetos Pessoais & Open Source"
+              : "Personal Projects & Open Source"}
           </h2>
           <a
             href="https://github.com/gstvribs?tab=repositories"
@@ -486,19 +488,30 @@ export function PortfolioHome({
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {PROFILE.projects.map((project) => (
+          {PROFILE.projects.map((project, idx) => (
             <a
               key={project.slug}
-              href={project.repoUrl}
+              href={project.liveUrl || project.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="surface-card rounded-2xl p-4 flex flex-col justify-between gap-2 group"
+              className={`surface-card rounded-2xl p-4 flex flex-col justify-between gap-2 group ${
+                idx === 0
+                  ? "sm:col-span-2 border-emerald-500/30 bg-emerald-500/5"
+                  : ""
+              }`}
             >
-              <div className="space-y-1">
+              <div className="space-y-1.5">
                 <div className="flex items-center justify-between gap-2">
-                  <span className="font-mono-code text-xs font-semibold text-[var(--text-primary)] group-hover:text-emerald-400 transition-colors truncate">
-                    {project.name}
-                  </span>
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="font-mono-code text-xs sm:text-sm font-semibold text-[var(--text-primary)] group-hover:text-emerald-400 transition-colors truncate">
+                      {project.name}
+                    </span>
+                    {project.badge && (
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-mono-code bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shrink-0">
+                        {project.badge[lang]}
+                      </span>
+                    )}
+                  </div>
                   <ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-muted)] shrink-0" />
                 </div>
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
