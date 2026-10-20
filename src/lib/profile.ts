@@ -205,16 +205,6 @@ export const PROFILE = {
       badge: { pt: "Projeto Pessoal · Live", en: "Personal Project · Live" },
     },
     {
-      name: "dojo-contract-tests",
-      slug: "dojo-contract-tests",
-      description: {
-        pt: "Exemplos práticos de testes de contrato para APIs.",
-        en: "Practical examples of API contract testing.",
-      },
-      repoUrl: "https://github.com/gstvribs/dojo-contract-tests",
-      language: "JavaScript",
-    },
-    {
       name: "monorepo-react-component-library",
       slug: "monorepo-react-component-library",
       description: {
@@ -235,17 +225,6 @@ export const PROFILE = {
       repoUrl: "https://github.com/gstvribs/monorepo-angular-component-library",
       liveUrl: "https://thedesignsystem.gustavoribeiro.dev/",
       language: "Angular / SCSS",
-    },
-    {
-      name: "material-ui-currency-textfield",
-      slug: "material-ui-currency-textfield",
-      description: {
-        pt: "Input monetário formatado para React Material UI.",
-        en: "Formatted currency input for React Material UI.",
-      },
-      repoUrl: "https://github.com/gstvribs/material-ui-currency-textfield",
-      liveUrl: "https://unicef.github.io/material-ui-currency-textfield/",
-      language: "React",
     },
   ] as ProjectItem[],
   talksAndMedia: [
